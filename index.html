@@ -1,4 +1,4 @@
-<!doctype html>
+<<!doctype html>
 <html lang="it">
 <head>
 <meta charset="utf-8">
@@ -7,122 +7,136 @@
 
 <style>
 /* =========================================================
-   1. VARIABILI DEI COLORI E DEGLI STILI GENERALI 
+   1. VARIABILI DEI COLORI E DEGLI STILI GENERALI
+   Modifica qui i colori per cambiare l'aspetto di tutto il sito
    ========================================================= */
 :root {
-  --bg: #fcfdff;             /* Sfondo generale  */
-  --panel: #bce8ff;          /* Sfondo delle schede */
-  --card-bg: #F8FAFC;        /* Sfondo secondario per riquadri interni */
-  --text: #334155;           /* Testo principale */
-  --text-muted: #64748B;     /* Testo secondario */
-  --accent: #003891;         /* colore titoli ed elementi */
-  --accent2: #004e78;        /* colore dei dettagli  */
-  --line: #E2E8F0;           /* stile delle linee */
-  --radius: 18px;            /* stile delle schede */
-  --radius2: 12px;           /* stile degli elementi piccoli */
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); /* stile delle ombre */
-  --max: 1100px;             /* larghezza massima pagina */
+  --bg: #EAEFEF;             /* Colore di sfondo generale del sito (grigio-azzurro riposante) */
+  --panel: #F8FAFA;          /* Sfondo dei riquadri/schede principali (grigio perla opaco) */
+  --card-bg: #FFFFFF;        /* Sfondo alternativo per sotto-elementi */
+  --text: #1E293B;           /* Colore dei testi principali (antracite scuro ben visibile) */
+  --text-muted: #475569;     /* Colore per sottotitoli e testi secondari */
+  --primary: #0284C7;        /* Colore d'accento azzurro per dettagli e icone */
+  --primary-dark: #0F4C81;   /* Colore blu notte per i titoli e i bottoni attivi */
+  --accent: #0284C7;         /* Colore dei pallini degli elenchi e barrette */
+  --line: #CBD5E1;           /* Colore dei bordi e delle linee divisorie */
+  --radius: 18px;            /* Arrotondamento degli angoli delle schede grandi */
+  --radius2: 12px;           /* Arrotondamento degli angoli per elementi piccoli */
+  --shadow: 0 10px 25px rgba(15, 23, 42, 0.05); /* Ombra morbida sotto le schede */
+  --max: 1100px;             /* Larghezza massima dei contenuti della pagina */
 }
 
-/* Reset base */
+/* Reset base per il calcolo delle dimensioni */
 * { box-sizing: border-box; }
 
 /* =========================================================
-   2. STILE DEL CORPO DELLA PAGINA 
+   2. STILE DEL CORPO DELLA PAGINA (BODY)
    ========================================================= */
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--bg);
+  /* Sfumature di sfondo morbide senza abbagliare la vista */
+  background:
+    radial-gradient(900px 500px at 10% 0%, rgba(2, 132, 199, 0.08), transparent 60%),
+    radial-gradient(800px 400px at 90% 10%, rgba(148, 163, 184, 0.12), transparent 65%),
+    var(--bg);
   color: var(--text);
-  line-height: 1.8;
+  line-height: 1.7; /* Spaziatura tra le righe di testo per facilitare la lettura */
 }
 
 /* =========================================================
-   3. BARRA DI NAVIGAZIONE IN ALTO 
+   3. BARRA DI NAVIGAZIONE IN ALTO (TOPBAR)
    ========================================================= */
 .topbar {
-  position: fixed;       
+  position: fixed;        /* Rimane bloccata in alto mentre si scorre la pagina */
   top: 0; left: 0; right: 0;
-  background: rgba(240, 244, 248, 0.92); 
-  backdrop-filter: blur(16px);            
+  background: rgba(234, 239, 239, 0.92); /* Sfondo semitrasparente */
+  backdrop-filter: blur(16px);            /* Effetto vetro sfocato */
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid var(--line);   /* Linea di separazione sotto il menu */
+  z-index: 1000;                          /* Mantiene la barra sopra tutti gli altri elementi */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
+/* Contenitore interno della barra in alto */
 .topbar-inner {
   max-width: var(--max);
   margin: auto;
   padding: 12px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Spazia il logo a sinistra e i pulsanti a destra */
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
 }
 
+/* Stile del Logo e Titolo */
 .brand {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
+/* Il quadratino colorato del logo */
 .logo {
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent), #0F4C81);
-  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+  background: linear-gradient(135deg, #0284C7, #0F4C81); /* Sfumatura blu del logo */
+  box-shadow: 0 4px 10px rgba(15, 76, 129, 0.25);
 }
 
 .brand b {
-  letter-spacing: .14em;
+  letter-spacing: .12em;
   color: #0F172A;
   font-size: 1.1rem;
 }
 
 .brand small {
-  color: #64748B;
+  color: #475569;
   font-size: .8rem;
   font-weight: 500;
 }
 
+/* Contenitore dei pulsanti del menu */
 .nav {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
 }
 
+/* Singoli pulsanti di navigazione */
 .nav button {
   background: none;
   border: none;
-  color: #475569;
-  padding: 8px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  color: #334155;             /* Colore del testo dei pulsanti non attivi */
+  padding: 8px 14px;          /* Dimensione interna dei pulsanti */
+  border-radius: 999px;       /* Forma a pillola/arrotondata */
+  cursor: pointer;            /* Cambia il cursore al passaggio del mouse */
+  transition: all 0.2s ease;  /* Animazione morbida al cambio stato */
   font-size: 0.9rem;
   font-weight: 600;
 }
 
+/* Effetto quando si passa sopra col mouse a un pulsante */
 .nav button:hover {
-  background: #E2E8F0;
+  background: #CBD5E1;
   color: #0F172A;
 }
 
+/* Stile del pulsante della pagina CORRENTE/ATTIVA */
 .nav button.active {
-  background: #0F172A; 
-  color: #FFFFFF;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
+  background: var(--primary-dark); /* Colore blu notte */
+  color: #ffffff;                  /* Testo bianco sul pulsante attivo */
+  box-shadow: 0 4px 10px rgba(15, 76, 129, 0.2);
 }
 
 /* =========================================================
    4. GESTIONE PAGINE E TRANSIZIONI
    ========================================================= */
-.page { display: none; }
+.page { display: none; } /* Le pagine nascoste non occupano spazio */
 
+/* La pagina visibile si attiva con una leggera animazione verso l'alto */
 .page.active {
   display: block;
   animation: fadeIn 0.3s ease-out;
@@ -139,13 +153,15 @@ body {
   padding: 24px 20px;
 }
 
-.spacer { height: 85px; }
+/* Spazio vuoto in alto per non far sovrapporre la barra fissa ai contenuti */
+.spacer { height: 80px; }
 
 /* =========================================================
-   5. INTESTAZIONI E SCHEDE 
+   5. INTESTAZIONI E SCHEDE (HERO & CARDS)
    ========================================================= */
+/* Box del titolo in cima a ogni pagina */
 .hero {
-  background: var(--panel);
+  background: linear-gradient(135deg, #F8FAFA, #E2E8F0);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 32px;
@@ -153,22 +169,26 @@ body {
   margin-bottom: 24px;
 }
 
+/* Titolo principale (H1) */
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   margin: 0;
-  color: #0F172A;
+  color: #0F172A; /* Blu scurissimo / Antracite */
   font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
+/* Sottotitolo sotto H1 */
 .sub {
-  color: var(--accent);
+  color: var(--primary-dark);
   margin-top: 6px;
   font-size: 1.05rem;
   font-weight: 600;
 }
 
+/* Schede principali dei contenuti */
 .card {
-  background: var(--panel); 
+  background: var(--panel);      /* Grigio perla opaco riposante per gli occhi */
   border-radius: var(--radius);
   border: 1px solid var(--line);
   padding: 36px;
@@ -176,6 +196,7 @@ h1 {
   margin-bottom: 32px;
 }
 
+/* Contenitore di testo formattato */
 .doc {
   max-width: 920px;
   margin: auto;
@@ -184,56 +205,61 @@ h1 {
   color: var(--text);
 }
 
+/* Titoli delle sezioni interne (H2) */
 h2 {
-  color: var(--accent);
+  color: var(--primary-dark);
   margin: 0 0 20px 0;
-  font-size: 1.7rem;
-  border-bottom: 2px solid var(--line);
+  font-size: 1.65rem;
+  border-bottom: 2px solid var(--line); /* Linea sotto il titolo H2 */
   padding-bottom: 10px;
   font-weight: 700;
 }
 
+/* Sottotitoli dei paragrafi (H3) con barretta colorata */
 h3 {
   color: #0F172A;
   margin: 28px 0 12px;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 700;
 }
 
+/* Barretta colorata decorativa a sinistra di H3 */
 h3::before {
   content: '';
-  width: 4px;
+  width: 5px;
   height: 18px;
   background: var(--accent);
   border-radius: 4px;
   display: inline-block;
 }
 
-.doc p { margin: 18px 0; }
+.doc p { margin: 16px 0; }
 
+/* Elenchi puntati personalizzati */
 .doc ul {
   margin: 12px 0 24px 0;
   padding: 0;
-  list-style: none;
+  list-style: none; /* Nasconde i pallini predefiniti del browser */
 }
 
 .doc li {
-  margin: 12px 0;
+  margin: 10px 0;
   position: relative;
-  padding-left: 26px;
+  padding-left: 24px;
   color: var(--text);
 }
 
+/* Pallino azzurro personalizzato per gli elenchi */
 .doc li::before {
   content: '•';
   position: absolute;
-  left: 0;
+  left: 4px;
   color: var(--accent);
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .doc strong {
@@ -241,23 +267,29 @@ h3::before {
   font-weight: 700;
 }
 
+/* Riquadro di evidenziazione speciale per link o note importanti */
 .highlight-box {
-  background: var(--card-bg);
-  border-left: 4px solid var(--accent);
+  background: #E2E8F0;
+  border-left: 4px solid var(--primary-dark); /* Bordo spesso sul lato sinistro */
   border-radius: 8px;
   padding: 16px 20px;
   margin: 20px 0;
+  color: #0F172A;
 }
 
+/* =========================================================
+   6. PIÈ DI PAGINA (FOOTER)
+   ========================================================= */
 footer {
   margin: 40px 0 20px;
   padding: 24px 0;
-  color: #64748B;
+  color: #475569;
   text-align: center;
   font-size: .9rem;
   border-top: 1px solid var(--line);
 }
 
+/* Adaptazione per schermi piccoli / cellulari */
 @media (max-width: 768px) {
   .topbar-inner { flex-direction: column; align-items: flex-start; }
   .nav { width: 100%; overflow-x: auto; padding-bottom: 4px; }
@@ -270,362 +302,364 @@ footer {
 <body>
 
 <!-- =========================================================
-     BARRA DI NAVIGAZIONE (MENU)
+     INIZIO BARRA DI NAVIGAZIONE
+     Per aggiungere una nuova voce al menu:
+     Crea un nuovo <button id="tab-NOME" onclick="go('NOME')">Titolo</button>
      ========================================================= -->
 <header class="topbar">
-<div class="topbar-inner">
-<div class="brand">
-<div class="logo"></div>
-<div><b>RADON</b><br><small>Progetto scientifico</small></div>
-</div>
-<nav class="nav">
-<button id="tab-home" class="active" onclick="go('home')">Il Progetto</button>
-<button id="tab-radioattivita" onclick="go('radioattivita')">Radioattività</button>
-<button id="tab-radon" onclick="go('radon')">Radon</button>
-<button id="tab-medicina" onclick="go('medicina')">Medicina nucleare</button>
-<button id="tab-malattie" onclick="go('malattie')">Malattie</button>
-<button id="tab-normative" onclick="go('normative')">Normative</button>
-<button id="tab-dati" onclick="go('dati')">Dati Raccolti</button>
-<button id="tab-summer-school" onclick="go('summer-school')">Radio Lab Summer School</button>
-</nav>
-</div>
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo"></div>
+      <div><b>RADON</b><br><small>Progetto scientifico</small></div>
+    </div>
+    <nav class="nav">
+      <button id="tab-home" class="active" onclick="go('home')">Il Progetto</button>
+      <button id="tab-radioattivita" onclick="go('radioattivita')">Radioattività</button>
+      <button id="tab-radon" onclick="go('radon')">Radon</button>
+      <button id="tab-medicina" onclick="go('medicina')">Medicina nucleare</button>
+      <button id="tab-malattie" onclick="go('malattie')">Malattie</button>
+      <button id="tab-normative" onclick="go('normative')">Normative</button>
+      <button id="tab-dati" onclick="go('dati')">Dati Raccolti</button>
+      <button id="tab-summer-school" onclick="go('summer-school')">Radio Lab Summer School</button>
+    </nav>
+  </div>
 </header>
 
-<div class="spacer"></div>
+<div class="spacer"></div> <!-- Spaziatore fisso -->
 
 <main class="container">
 
 <!-- =========================================================
-     PAGINA 1: HOME 
+     PAGINA 1: HOME / IL PROGETTO
      ========================================================= -->
 <section id="page-home" class="page active">
-<div class="hero">
-<h1>Il Progetto sul RADON</h1>
-<div class="sub"></div>
-</div>
-<div class="card">
-<div class="doc">
-<h2>Benvenuti</h2>
-<p>Il presente progetto nasce all'interno di un percorso didattico e scientifico biennale, iniziato nel corso del terzo anno della scuola secondaria di secondo grado e giunto a compimento al termine del quarto anno. L'obiettivo principale dell'attività è stato lo studio, il monitoraggio e la quantificazione della presenza di gas Radon all'interno di ambienti confinati nella nostra scuola, unendo l'apprendimento teorico delle scienze fisiche e ambientali all'applicazione pratica sul campo.</p>
+  <div class="hero">
+    <h1>Il Progetto sul RADON</h1>
+    <div class="sub">Percorso di monitoraggio e radioprotezione scolastica</div>
+  </div>
+  <div class="card">
+    <div class="doc">
+      <h2>Benvenuti</h2>
+      <p>Il presente progetto nasce all'interno di un percorso didattico e scientifico biennale, iniziato nel corso del terzo anno della scuola secondaria di secondo grado e giunto a compimento al termine del quarto anno. L'obiettivo principale dell'attività è stato lo studio, il monitoraggio e la quantificazione della presenza di gas Radon all'interno di ambienti confinati nella nostra scuola, unendo l'apprendimento teorico delle scienze fisiche e ambientali all'applicazione pratica sul campo.</p>
 
-<p>Il nostro percorso si è sviluppato in due fasi principali:</p>
-<ul>
-    <li><strong>Classe Terza (Fase di Studio e Posizionamento):</strong> Abbiamo frequentato una serie di lezioni teoriche dedicate alla fisica del Radon e ai principi della radioprotezione. Successivamente, abbiamo posizionato dei vetrini in diversi punti strategici dell'istituto per raccogliere i dati di esposizione.</li>
-    <li><strong>Classe Quarta (Fase di Analisi e Misurazione):</strong> Abbiamo rimosso i vetrini e, attraverso l'utilizzo di un microscopio ottico collegato a una fotocamera, abbiamo fotografato e analizzato i vetrini. Questo ci ha permesso di contare le tracce lasciate dall'impatto delle particelle alfa, stimando così la concentrazione del gas nei vari locali.</li>
-</ul>
+      <p>Il nostro percorso si è sviluppato in due fasi principali:</p>
+      <ul>
+        <li><strong>Classe Terza (Fase di Studio e Posizionamento):</strong> Abbiamo frequentato una serie di lezioni teoriche dedicate alla fisica del Radon e ai principi della radioprotezione. Successivamente, abbiamo posizionato dei vetrini in diversi punti strategici dell'istituto per raccogliere i dati di esposizione.</li>
+        <li><strong>Classe Quarta (Fase di Analisi e Misurazione):</strong> Abbiamo rimosso i vetrini e, attraverso l'utilizzo di un microscopio ottico collegato a una fotocamera, abbiamo fotografato e analizzato i vetrini. Questo ci ha permesso di contare le tracce lasciate dall'impatto delle particelle alfa, stimando così la concentrazione del gas nei vari locali.</li>
+      </ul>
 
-<p>Questo progetto ci ha permesso di acquisire competenze tecniche specifiche nell'ambito della dosimetria (ovvero la misurazione della quantità di radiazioni assorbite in un determinato periodo di tempo) e dell'analisi digitale dei dati, sviluppando una reale consapevolezza sui rischi ambientali e traducendo la teoria dei libri di testo in una vera attività di ricerca scientifica.</p>
-</div>
-</div>
+      <p>Questo progetto ci ha permesso di acquisire competenze tecniche specifiche nell'ambito della dosimetria (ovvero la misurazione della quantità di radiazioni assorbite in un determinato periodo di tempo) e dell'analisi digitale dei dati, sviluppando una reale consapevolezza sui rischi ambientali e traducendo la teoria dei libri di testo in una vera attività di ricerca scientifica.</p>
+    </div>
+  </div>
 </section>
 
 <!-- =========================================================
-     PAGINA 2: RADIOATTIVITÀ 
+     PAGINA 2: RADIOATTIVITÀ
      ========================================================= -->
 <section id="page-radioattivita" class="page">
-<div class="hero">
-<h1>Radioattività</h1>
-<div class="sub">Fenomeni fisici</div>
-</div>
-<div class="card">
-<div class="doc">
-<h2>Legge del decadimento radioattivo</h2>
-<h3>Che cos’è?</h3>
-<p>La radioattività è il fenomeno per cui alcuni nuclei atomici instabili si trasformano spontaneamente in nuclei più stabili, emettendo radiazioni sotto forma di particelle o energia. Questo processo avviene naturalmente nel tempo e può comportare l’emissione di radiazioni alfa, beta o gamma, che trasportano energia e possono interagire con la materia.</p>
+  <div class="hero">
+    <h1>Radioattività</h1>
+    <div class="sub">I principi e i fenomeni fisici fondamentali</div>
+  </div>
+  <div class="card">
+    <div class="doc">
+      <h2>Legge del decadimento radioattivo</h2>
+      <h3>Che cos’è?</h3>
+      <p>La radioattività è il fenomeno per cui alcuni nuclei atomici instabili si trasformano spontaneamente in nuclei più stabili, emettendo radiazioni sotto forma di particelle o energia. Questo processo avviene naturalmente nel tempo e può comportare l’emissione di radiazioni alfa, beta o gamma, che trasportano energia e possono interagire con la materia.</p>
 
-<h3>Scoperta</h3>
-<p>Durante il corso dell’Ottocento, Becquerel e i coniugi Curie diedero un contributo fondamentale riguardo lo studio della radioattività. Scoprirono che molti nuclei presenti in natura sono instabili (ad esempio il Radio), a un certo istante emettono un corpuscolo e decadono, ovvero si trasformano in nuclei di elementi differenti: questi nuclei sono detti dunque radioattivi. Il nucleo di partenza si definisce “nucleo padre”, i suoi prodotti sono detti “nuclei figli”. Se essi sono instabili, si azionerà una reazione a catena fino al raggiungimento della stabilità.</p>
+      <h3>Scoperta</h3>
+      <p>Durante il corso dell’Ottocento, Becquerel e i coniugi Curie diedero un contributo fondamentale riguardo lo studio della radioattività. Scoprirono che molti nuclei presenti in natura sono instabili (ad esempio il Radio), a un certo istante emettono un corpuscolo e decadono, ovvero si trasformano in nuclei di elementi differenti: questi nuclei sono detti dunque radioattivi. Il nucleo di partenza si definisce “nucleo padre”, i suoi prodotti sono detti “nuclei figli”. Se essi sono instabili, si azionerà una reazione a catena fino al raggiungimento della stabilità.</p>
 
-<h3>I tipi di radiazioni</h3>
-<p>Sono state trovate tre differenti tipi di reazione, in base alla carica rilasciata:</p>
-<ul>
-<li>Decadimento Alfa;</li>
-<li>Decadimento Beta;</li>
-<li>Decadimento Gamma.</li>
-</ul>
+      <h3>I tipi di radiazioni</h3>
+      <p>Sono state trovate tre differenti tipi di reazione, in base alla carica rilasciata:</p>
+      <ul>
+        <li>Decadimento Alfa;</li>
+        <li>Decadimento Beta;</li>
+        <li>Decadimento Gamma.</li>
+      </ul>
 
-<h3>Il decadimento Alfa</h3>
-<p>Origina una reazione di carica positiva, dalla quale viene emessa la particella alfa, un nucleo di Elio-4 (<sub>4</sub><sup>2</sup>He). Il nucleo figlio avrà numero Z ridotto di 2 unità, e il numero A ridotto di 4 unità.</p>
+      <h3>Il decadimento Alfa</h3>
+      <p>Origina una reazione di carica positiva, dalla quale viene emessa la particella alfa, un nucleo di Elio-4 (<sub>4</sub><sup>2</sup>He). Il nucleo figlio avrà numero Z ridotto di 2 unità, e il numero A ridotto di 4 unità.</p>
 
-<h3>Il decadimento Beta</h3>
-<p>Origina una reazione di carica negativa, dalla quale viene emessa la particella beta. In questo decadimento la particella figlio mantiene il numero Z inalterato e il numero A aumenta di 1 unità, poiché un neutrone si trasforma in protone. Il decadimento Beta presenta una particolarità nei prodotti della reazione: oltre alla particella decaduta, e ad un elettrone, tende a formarsi una analoga particella, definita antineutrino elettronico.</p>
+      <h3>Il decadimento Beta</h3>
+      <p>Origina una reazione di carica negativa, dalla quale viene emessa la particella beta. In questo decadimento la particella figlio mantiene il numero Z inalterato e il numero A aumenta di 1 unità, poiché un neutrone si trasforma in protone. Il decadimento Beta presenta una particolarità nei prodotti della reazione: oltre alla particella decaduta, e ad un elettrone, tende a formarsi una analoga particella, definita antineutrino elettronico.</p>
 
-<h3>Che cos’è un neutrino?</h3>
-<p>Neutrini ed antineutrini sono particelle di massa infinitesimale carica nulla; in grado di avvicinarsi a c (2.9 *10^8 m/s).</p>
+      <h3>Che cos’è un neutrino?</h3>
+      <p>Neutrini ed antineutrini sono particelle di massa infinitesimale carica nulla; in grado di avvicinarsi a c (2.9 *10^8 m/s).</p>
 
-<h3>Il decadimento Gamma</h3>
-<p>Il fotone gamma viene emesso dal nucleo quando compie una transizione verso lo stato fondamentale. Nel decadimento gamma il fotone gamma emesso ha un’energia uguale alla differenza tra il livello energetico dello stato di partenza e quello dello stato di arrivo. Questo processo è analogo a quello di un elettrone in un atomo che passa da uno stato eccitato a uno di energia minore emettendo un fotone di frequenza. Il decadimento gamma è considerato un decadimento nucleare in quanto viene emessa una radiazione anche se il nucleo non subisce nessuna trasmutazione.</p>
+      <h3>Il decadimento Gamma</h3>
+      <p>Il fotone gamma viene emesso dal nucleo quando compie una transizione verso lo stato fondamentale. Nel decadimento gamma il fotone gamma emesso ha un’energia uguale alla differenza tra il livello energetico dello stato di partenza e quello dello stato di arrivo. Questo processo è analogo a quello di un elettrone in un atomo che passa da uno stato eccitato a uno di energia minore emettendo un fotone di frequenza. Il decadimento gamma è considerato un decadimento nucleare in quanto viene emessa una radiazione anche se il nucleo non subisce nessuna trasmutazione.</p>
 
-<h3>Capacità di penetrazione</h3>
-<ul>
-<li>Particelle alfa: penetrano pochissimo nella materia</li>
-<li>Particelle beta: sono più penetranti delle alfa</li>
-<li>I raggi gamma: possono attraversare diversi centimetri di materia molto densa prima che vengano assorbiti</li>
-</ul>
+      <h3>Capacità di penetrazione</h3>
+      <ul>
+        <li>Particelle alfa: penetrano pochissimo nella materia</li>
+        <li>Particelle beta: sono più penetranti delle alfa</li>
+        <li>I raggi gamma: possono attraversare diversi centimetri di materia molto densa prima che vengano assorbiti</li>
+      </ul>
 
-<h3>Cause dei decadimenti radioattivi</h3>
-<p>Decadimento alfa: dipende dall’azione della forza nucleare. Decadimento beta: avviene quando il nucleo di un atomo è instabile. La forza responsabile del decadimento è chiamata interazione debole.</p>
+      <h3>Cause dei decadimenti radioattivi</h3>
+      <p>Decadimento alfa: dipende dall’azione della forza nucleare. Decadimento beta: avviene quando il nucleo di un atomo è instabile. La forza responsabile del decadimento è chiamata interazione debole.</p>
 
-<h3>Le famiglie radioattive</h3>
-<p>In una famiglia radioattiva, un nucleo capostipite da origine a una discendenza di nuclei instabili, che si susseguono finché non viene prodotto un nucleo stabile. Ne esistono di tre tipi:</p>
-<ul>
-<li>Famiglia dell’uranio</li>
-<li>Famiglia del torio</li>
-<li>Famiglia dell’attinio</li>
-</ul>
+      <h3>Le famiglie radioattive</h3>
+      <p>In una famiglia radioattiva, un nucleo capostipite da origine a una discendenza di nuclei instabili, che si susseguono finché non viene prodotto un nucleo stabile. Ne esistono di tre tipi:</p>
+      <ul>
+        <li>Famiglia dell’uranio</li>
+        <li>Famiglia del torio</li>
+        <li>Famiglia dell’attinio</li>
+      </ul>
 
-<h3>Legge di conservazione nei decadimenti</h3>
-<p>La prima legge di conservazione dice che in ogni decadimento la massa del nucleo padre è maggiore della somma delle masse dei prodotti. La massa in eccesso rende conto dell’energia cinetica del nucleo figlio e degli altri prodotti del decadimento, secondo la relazione massa-energia di Einstein. I decadimenti soddisfano altre tre leggi di conservazione: quantità di moto relativistica, la carica elettrica, il numero di nucleoni.</p>
+      <h3>Legge di conservazione nei decadimenti</h3>
+      <p>La prima legge di conservazione dice che in ogni decadimento la massa del nucleo padre è maggiore della somma delle masse dei prodotti. La massa in eccesso rende conto dell’energia cinetica del nucleo figlio e degli altri prodotti del decadimento, secondo la relazione massa-energia di Einstein. I decadimenti soddisfano altre tre leggi di conservazione: quantità di moto relativistica, la carica elettrica, il numero di nucleoni.</p>
 
-<h3>Fissione e Fusione Nucleare</h3>
-<p>Sono due modi opposti per ottenere energia a partire da un nucleo di un elemento. La differenza principale è che la fissione consiste nella separazione degli atomi di un nucleo di grande massa; la fusione, invece, implica l’unione di due o più nuclei di atomi leggeri.</p>
-<p><strong>Fissione:</strong> Il processo consiste nella separazione di un nucleo di grande massa in due nuclei più piccoli, attraverso la combinazione con un neutrone, la reazione libera un'ingente quantità di energia. Gli elementi più famosi usati per la fissione sono l’Uranio 235 e il Plutonio 239.</p>
-<p><strong>Fusione:</strong> Il processo che genera, ad esempio, l’energia del Sole. Consiste nella fusione degli atomi di idrogeno, il cui risultato è la formazione di elio. Poiché la reazione avvenga questi nuclei devono urtarsi a velocità molto elevate, così da riuscire a superare la forza di Coulomb (repulsiva).</p>
-</div>
-</div>
+      <h3>Fissione e Fusione Nucleare</h3>
+      <p>Sono due modi opposti per ottenere energia a partire da un nucleo di un elemento. La differenza principale è che la fissione consiste nella separazione degli atomi di un nucleo di grande massa; la fusione, invece, implica l’unione di due o più nuclei di atomi leggeri.</p>
+      <p><strong>Fissione:</strong> Il processo consiste nella separazione di un nucleo di grande massa in due nuclei più piccoli, attraverso la combinazione con un neutrone, la reazione libera un'ingente quantità di energia. Gli elementi più famosi usati per la fissione sono l’Uranio 235 e il Plutonio 239.</p>
+      <p><strong>Fusione:</strong> Il processo che genera, ad esempio, l’energia del Sole. Consiste nella fusione degli atomi di idrogeno, il cui risultato è la formazione di elio. Poiché la reazione avvenga questi nuclei devono urtarsi a velocità molto elevate, così da riuscire a superare la forza di Coulomb (repulsiva).</p>
+    </div>
+  </div>
 </section>
 
 <!-- =========================================================
-     PAGINA 3: RADON (TESTI ORIGINALI)
+     PAGINA 3: RADON
      ========================================================= -->
 <section id="page-radon" class="page">
-<div class="hero">
-<h1>Radon</h1>
-<div class="sub">Gas radioattivo naturale</div>
-</div>
-<div class="card">
-<div class="doc">
-<h2>Identikit del Radon</h2>
-<p>Il radon è un elemento chimico naturale appartenente al gruppo dei gas nobili. Il suo simbolo è Rn e il numero atomico è 86. È stato scoperto nel 1900 dallo scienziato tedesco Friedrich Ernst Dorn durante gli studi sulla radioattività. Si tratta di un gas incolore, inodore e insapore, quindi non percepibile dai sensi umani.</p>
+  <div class="hero">
+    <h1>Radon</h1>
+    <div class="sub">Caratteristiche e comportamento del gas radioattivo naturale</div>
+  </div>
+  <div class="card">
+    <div class="doc">
+      <h2>Identikit del Radon</h2>
+      <p>Il radon è un elemento chimico naturale appartenente al gruppo dei gas nobili. Il suo simbolo è Rn e il numero atomico è 86. È stato scoperto nel 1900 dallo scienziato tedesco Friedrich Ernst Dorn durante gli studi sulla radioattività. Si tratta di un gas incolore, inodore e insapore, quindi non percepibile dai sensi umani.</p>
 
-<p>Il radon si forma continuamente nel sottosuolo a partire dal decadimento radioattivo di uranio e torio, elementi presenti in molte rocce e materiali naturali. Per questo motivo è diffuso in tutto il pianeta, anche se la sua concentrazione può variare molto in base alla composizione geologica del terreno. Essendo un gas, il radon può risalire facilmente dal suolo e penetrare negli edifici, entrando attraverso:</p>
-<ul>
-<li>crepe nelle fondamenta</li>
-<li>pavimenti, pareti e tubature</li>
-</ul>
+      <p>Il radon si forma continuamente nel sottosuolo a partire dal decadimento radioattivo di uranio e torio, elementi presenti in molte rocce e materiali naturali. Per questo motivo è diffuso in tutto il pianeta, anche se la sua concentrazione può variare molto in base alla composizione geologica del terreno. Essendo un gas, il radon può risalire facilmente dal suolo e penetrare negli edifici, entrando attraverso:</p>
+      <ul>
+        <li>crepe nelle fondamenta</li>
+        <li>pavimenti, pareti e tubature</li>
+      </ul>
 
-<p>Una volta all’interno, tende ad accumularsi soprattutto nei locali chiusi e poco ventilati, come cantine e piani bassi.</p>
+      <p>Una volta all’interno, tende ad accumularsi soprattutto nei locali chiusi e poco ventilati, come cantine e piani bassi.</p>
 
-<p>Il radon è radioattivo perché i suoi nuclei atomici sono instabili. Essi tendono spontaneamente a trasformarsi in nuclei più stabili, emettendo radiazioni ionizzanti durante il processo di decadimento radioattivo. In modo semplificato, il processo può essere riassunto così:</p>
-<ul>
-<li>nucleo instabile</li>
-<li>decadimento radioattivo</li>
-<li>emissione di radiazioni</li>
-</ul>
+      <p>Il radon è radioattivo perché i suoi nuclei atomici sono instabili. Essi tendono spontaneamente a trasformarsi in nuclei più stabili, emettendo radiazioni ionizzanti durante il processo di decadimento radioattivo. In modo semplificato, il processo può essere riassunto così:</p>
+      <ul>
+        <li>nucleo instabile</li>
+        <li>decadimento radioattivo</li>
+        <li>emissione di radiazioni</li>
+      </ul>
 
-<p>I prodotti del decadimento del radon, anch’essi radioattivi, possono aderire alle particelle di polvere presenti nell’aria. Se inalati, si depositano nei polmoni, dove le radiazioni emesse possono danneggiare il DNA delle cellule. Questo danno, se prolungato nel tempo, aumenta il rischio di sviluppare il tumore ai polmoni, soprattutto nei soggetti esposti per lunghi periodi. Per questo motivo il radon è riconosciuto come una delle principali cause di tumore polmonare non legate al fumo ed è considerato un importante problema di salute pubblica.</p>
+      <p>I prodotti del decadimento del radon, anch’essi radioattivi, possono aderire alle particelle di polvere presenti nell’aria. Se inalati, si depositano nei polmoni, dove le radiazioni emesse possono danneggiare il DNA delle cellule. Questo danno, se prolungato nel tempo, aumenta il rischio di sviluppare il tumore ai polmoni, soprattutto nei soggetti esposti per lunghi periodi. Per questo motivo il radon è riconosciuto come una delle principali cause di tumore polmonare non legate al fumo ed è considerato un importante problema di salute pubblica.</p>
 
-<p>Dal punto di vista chimico, il radon si differenzia dagli altri gas nobili, come elio, neon e argon, che sono stabili e non radioattivi. Il radon è infatti l’unico gas nobile a presentare una radioattività significativa. Inoltre, rispetto agli elementi solidi o liquidi, la sua forma gassosa gli permette di:</p>
-<ul>
-<li>diffondersi rapidamente</li>
-<li>accumularsi senza essere notato</li>
-</ul>
+      <p>Dal punto di vista chimico, il radon si differenzia dagli altri gas nobili, come elio, neon e argon, che sono stabili e non radioattivi. Il radon è infatti l’unico gas nobile a presentare una radioattività significativa. Inoltre, rispetto agli elementi solidi o liquidi, la sua forma gassosa gli permette di:</p>
+      <ul>
+        <li>diffondersi rapidamente</li>
+        <li>accumularsi senza essere notato</li>
+      </ul>
 
-<p>Il radon ha una vita media breve, di pochi giorni, ma la sua presenza è costante perché viene prodotto continuamente dal decadimento degli elementi presenti nel sottosuolo. Per queste caratteristiche rappresenta un elemento di grande interesse scientifico ed è un esempio concreto di come fenomeni studiati in chimica e fisica possano avere conseguenze dirette sulla vita quotidiana e sulla sicurezza degli ambienti in cui viviamo.</p>
-</div>
-</div>
+      <p>Il radon ha una vita media breve, di pochi giorni, ma la sua presenza è costante perché viene prodotto continuamente dal decadimento degli elementi presenti nel sottosuolo. Per queste caratteristiche rappresenta un elemento di grande interesse scientifico ed è un esempio concreto di come fenomeni studiati in chimica e fisica possano avere conseguenze dirette sulla vita quotidiana e sulla sicurezza degli ambienti in cui viviamo.</p>
+    </div>
+  </div>
 </section>
 
 <!-- =========================================================
-     PAGINA 4: MEDICINA NUCLEARE 
+     PAGINA 4: MEDICINA NUCLEARE
      ========================================================= -->
 <section id="page-medicina" class="page">
-<div class="hero">
-<h1>Medicina nucleare</h1>
-<div class="sub">Applicazioni mediche della radioattività</div>
-</div>
-<div class="card">
-<div class="doc">
-<h2>Tecniche diagnostiche</h2>
-    
-<h3>PET (Tomografia a emissione di positroni)</h3>
-<p>E’ un esame non invasivo, che non comporta alcun rischio per la persona che ci si sottopone. Si svolge tramite la somministrazione per via endovenosa nell'avambraccio di un radiofarmaco composto da una molecola (o tracciante) e da un atomo. Esso, come una lampadina accesa, “illumina” le cellule a cui si lega, evidenziando così la presenza di eventuali patologie e il loro stadio.</p>
-    
-<p><strong>Dettagli della procedura:</strong></p>
-<ul>
-    <li>Ciascuno dei farmaci utilizzati è composto da specifiche molecole che vengono riconosciute solamente dai tessuti interessati dall’analisi per effettuare un esame preciso.</li>
-    <li>A seguito della somministrazione del farmaco, il paziente prima deve aspettare un tempo che può variare da qualche minuto fino a 60-90 minuti, per consentire al radiofarmaco di distribuirsi nell’organismo e raggiungere il tessuto interessato.</li>
-    <li>Al termine di questa attesa al paziente verrà richiesto di restare sdraiato su un tomografo.</li>
-    <li>Questo strumento, in grado di registrare le radiazioni emesse dal farmaco, andrà a esaminare il corpo riproducendo su computer le immagini registrate, che verranno poi valutate dal medico.</li>
-</ul>
+  <div class="hero">
+    <h1>Medicina nucleare</h1>
+    <div class="sub">Applicazioni tecnologiche e diagnosi medica</div>
+  </div>
+  <div class="card">
+    <div class="doc">
+      <h2>Tecniche diagnostiche</h2>
+        
+      <h3>PET (Tomografia a emissione di positroni)</h3>
+      <p>È un esame non invasivo, che non comporta alcun rischio per la persona che ci si sottopone. Si svolge tramite la somministrazione per via endovenosa nell'avambraccio di un radiofarmaco composto da una molecola (o tracciante) e da un atomo. Esso, come una lampadina accesa, “illumina” le cellule a cui si lega, evidenziando così la presenza di eventuali patologie e il loro stadio.</p>
+        
+      <p><strong>Dettagli della procedura:</strong></p>
+      <ul>
+        <li>Ciascuno dei farmaci utilizzati è composto da specifiche molecole che vengono riconosciute solamente dai tessuti interessati dall’analisi per effettuare un esame preciso.</li>
+        <li>A seguito della somministrazione del farmaco, il paziente prima deve aspettare un tempo che può variare da qualche minuto fino a 60-90 minuti, per consentire al radiofarmaco di distribuirsi nell’organismo e raggiungere il tessuto interessato.</li>
+        <li>Al termine di questa attesa al paziente verrà richiesto di restare sdraiato su un tomografo.</li>
+        <li>Questo strumento, in grado di registrare le radiazioni emesse dal farmaco, andrà a esaminare il corpo riproducendo su computer le immagini registrate, che verranno poi valutate dal medico.</li>
+      </ul>
 
-<h3>Scintigrafia</h3>
-<p>La scintigrafia è un esame appartenente alla medicina nucleare che consente di studiare il funzionamento degli organi e dei tessuti dell’organismo. A differenza di altre tecniche di imaging, come la radiografia o la TAC, che forniscono principalmente informazioni anatomiche, la scintigrafia permette di valutare i processi funzionali e metabolici, individuando alterazioni anche in fase precoce.</p>
+      <h3>Scintigrafia</h3>
+      <p>La scintigrafia è un esame appartenente alla medicina nucleare che consente di studiare il funzionamento degli organi e dei tessuti dell’organismo. A differenza di altre tecniche di imaging, come la radiografia o la TAC, che forniscono principalmente informazioni anatomiche, la scintigrafia permette di valutare i processi funzionali e metabolici, individuando alterazioni anche in fase precoce.</p>
 
-<p><strong>Funzionamento e procedura:</strong></p>
-<ul>
-    <li>L’esame si basa sulla somministrazione di un radiofarmaco che viene introdotto nell’organismo e si distribuisce selettivamente nell’organo o nel tessuto da esaminare.</li>
-    <li>Il radiofarmaco emette radiazioni gamma che vengono rilevate da uno strumento chiamato gamma-camera, il quale le trasforma in immagini diagnostiche.</li>
-    <li>Le immagini ottenute mostrano aree di maggiore o minore captazione del radiofarmaco, indicando rispettivamente un’attività funzionale aumentata o ridotta.</li>
-</ul>
+      <p><strong>Funzionamento e procedura:</strong></p>
+      <ul>
+        <li>L’esame si basa sulla somministrazione di un radiofarmaco che viene introdotto nell’organismo e si distribuisce selettivamente nell’organo o nel tessuto da esaminare.</li>
+        <li>Il radiofarmaco emette radiazioni gamma che vengono rilevate da uno strumento chiamato gamma-camera, il quale le trasforma in immagini diagnostiche.</li>
+        <li>Le immagini ottenute mostrano aree di maggiore o minore captazione del radiofarmaco, indicando rispettivamente un’attività funzionale aumentata o ridotta.</li>
+      </ul>
 
-<p><strong>Caratteristiche tecniche:</strong></p>
-<ul>
-    <li>Uno degli isotopi più utilizzati in scintigrafia è il <strong>Tecnezio-99m</strong>, scelto per le sue caratteristiche fisiche favorevoli, come la breve emivita e la bassa dose di radiazioni somministrata al paziente.</li>
-    <li>La scelta del radiofarmaco varia in base all’organo da studiare, permettendo di applicare la scintigrafia a numerosi ambiti clinici.</li>
-</ul>
+      <p><strong>Caratteristiche tecniche:</strong></p>
+      <ul>
+        <li>Uno degli isotopi più utilizzati in scintigrafia è il <strong>Tecnezio-99m</strong>, scelto per le sue caratteristiche fisiche favorevoli, come la breve emivita e la bassa dose di radiazioni somministrata al paziente.</li>
+        <li>La scelta del radiofarmaco varia in base all’organo da studiare, permettendo di applicare la scintigrafia a numerosi ambiti clinici.</li>
+      </ul>
 
-<p><strong>Applicazioni comuni:</strong></p>
-<ul>
-    <li>Studio del metabolismo osseo e valutazione della funzione tiroidea.</li>
-    <li>Analisi dell’attività cardiaca e della funzionalità renale.</li>
-    <li>Diagnosi di patologie polmonari, come l’embolia polmonare.</li>
-</ul>
+      <p><strong>Applicazioni comuni:</strong></p>
+      <ul>
+        <li>Studio del metabolismo osseo e valutazione della funzione tiroidea.</li>
+        <li>Analisi dell’attività cardiaca e della funzionalità renale.</li>
+        <li>Diagnosi di patologie polmonari, come l’embolia polmonare.</li>
+      </ul>
 
-<p><strong>Sicurezza e limiti:</strong></p>
-<ul>
-    <li>La procedura dell’esame è generalmente semplice e non invasiva. Il radiofarmaco viene poi eliminato naturalmente attraverso i normali processi fisiologici.</li>
-    <li>Dal punto di vista della sicurezza, la scintigrafia utilizza dosi di radiazioni basse e controllate, tali da rendere il rischio minimo rispetto al beneficio diagnostico ottenuto.</li>
-    <li>Un limite della scintigrafia è rappresentato dalla minore definizione anatomica rispetto ad altre tecniche di imaging, tuttavia questo aspetto è compensato dalla sua elevata sensibilità nel rilevare alterazioni funzionali.</li>
-</ul>
-</div>
-</div>
+      <p><strong>Sicurezza e limiti:</strong></p>
+      <ul>
+        <li>La procedura dell’esame è generalmente semplice e non invasiva. Il radiofarmaco viene poi eliminato naturalmente attraverso i normali processi fisiologici.</li>
+        <li>Dal punto di vista della sicurezza, la scintigrafia utilizza dosi di radiazioni basse e controllate, tali da rendere il rischio minimo rispetto al beneficio diagnostico ottenuto.</li>
+        <li>Un limite della scintigrafia è rappresentato dalla minore definizione anatomica rispetto ad altre tecniche di imaging, tuttavia questo aspetto è compensato dalla sua elevata sensibilità nel rilevare alterazioni funzionali.</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- =========================================================
-     PAGINA 5: MALATTIE 
+     PAGINA 5: MALATTIE
      ========================================================= -->
 <section id="page-malattie" class="page">
-<div class="hero">
-<h1>Malattie</h1>
-<div class="sub">Effetti sulla salute</div>
-</div>
-<div class="card">
-<div class="doc">
-<h2>MALATTIE RADON</h2>
+  <div class="hero">
+    <h1>Malattie</h1>
+    <div class="sub">Effetti biologici e prevenzione sanitaria</div>
+  </div>
+  <div class="card">
+    <div class="doc">
+      <h2>MALATTIE RADON</h2>
 
-<h3>Il radon: rischi per la salute</h3>
-<p>Il radon è un gas radioattivo naturale, incolore e inodore, che proviene dal suolo e dalle rocce. Può entrare negli edifici attraverso crepe e fessure e accumularsi negli ambienti chiusi, soprattutto nei locali poco ventilati come seminterrati e piani bassi.</p>
+      <h3>Il radon: rischi per la salute</h3>
+      <p>Il radon è un gas radioattivo naturale, incolore e inodore, che proviene dal suolo e dalle rocce. Può entrare negli edifici attraverso crepe e fessure e accumularsi negli ambienti chiusi, soprattutto nei locali poco ventilati come seminterrati e piani bassi.</p>
 
-<h3>Perché il radon è pericoloso</h3>
-<p>Il radon può essere dannoso per la salute se presente in concentrazioni elevate e per lunghi periodi, una delle conseguenze più pericolose è il tumore al polmone.</p>
+      <h3>Perché il radon è pericoloso</h3>
+      <p>Il radon può essere dannoso per la salute se presente in concentrazioni elevate e per lunghi periodi, una delle conseguenze più pericolose è il tumore al polmone.</p>
 
-<h3>Tumore al polmone</h3>
-<p>Il radon è la seconda causa di tumore al polmone dopo il fumo di sigaretta.</p>
-<p><strong>Il rischio aumenta con:</strong></p>
-<ul>
-    <li>esposizione prolungata</li>
-    <li>concentrazioni elevate di radon</li>
-    <li>fumo di sigaretta</li>
-</ul>
+      <h3>Tumore al polmone</h3>
+      <p>Il radon è la seconda causa di tumore al polmone dopo il fumo di sigaretta.</p>
+      <p><strong>Il rischio aumenta con:</strong></p>
+      <ul>
+        <li>esposizione prolungata</li>
+        <li>concentrazioni elevate di radon</li>
+        <li>fumo di sigaretta</li>
+      </ul>
 
-<h3>Meccanismo biologico: come causa il tumore</h3>
-<ul>
-    <li>I suoi prodotti di decadimento (polonio, piombo radioattivo) si attaccano alle particelle di polvere</li>
-    <li>Queste particelle si depositano sull’epitelio bronchiale</li>
-    <li>Emettono radiazioni alfa, che: danneggiano il DNA delle cellule e causano mutazioni genetiche</li>
-    <li>Con il tempo, le mutazioni possono portare a trasformazione neoplastica</li>
-</ul>
+      <h3>Meccanismo biologico: come causa il tumore</h3>
+      <ul>
+        <li>I suoi prodotti di decadimento (polonio, piombo radioattivo) si attaccano alle particelle di polvere</li>
+        <li>Queste particelle si depositano sull’epitelio bronchiale</li>
+        <li>Emettono radiazioni alfa, che: danneggiano il DNA delle cellule e causano mutazioni genetiche</li>
+        <li>Con il tempo, le mutazioni possono portare a trasformazione neoplastica</li>
+      </ul>
 
-<h3>Chi è più esposto</h3>
-<p><strong>Sono più esposto:</strong></p>
-<ul>
-    <li>studenti e personale che frequentano aule ai piani bassi o seminterrati</li>
-    <li>persone che trascorrono molte ore in ambienti chiusi</li>
-    <li>fumatori ed ex fumatori</li>
-</ul>
+      <h3>Chi è più esposto</h3>
+      <p><strong>Sono più esposti:</strong></p>
+      <ul>
+        <li>studenti e personale che frequentano aule ai piani bassi o seminterrati</li>
+        <li>persone che trascorrono molte ore in ambienti chiusi</li>
+        <li>fumatori ed ex fumatori</li>
+      </ul>
 
-<h3>Esami per l’osservazione e la diagnosi del tumore al polmone</h3>
-<p>Il tumore al polmone non dà sintomi nelle fasi iniziali, per questo la diagnosi precoce è difficile ed è opportuno fare degli esami più approfonditi, come:</p>
-<ul>
-    <li><strong>RADIOGRAFIA del TORACE (poco consigliata)</strong>: Può individuare masse sospette, ma non è sempre sufficiente.</li>
-    <li><strong>TAC (Tomografia Assiale Computerizzata)</strong>: È l’esame più importante per osservare dimensione e posizione del tumore ed eventuale diffusione ai tessuti vicini.</li>
-    <li><strong>PET (Tomografia a emissione di positroni)</strong>: Serve a valutare se il tumore è attivo e se si è diffuso ad altri organi.</li>
-    <li><strong>BRONCOSCOPIA</strong>: Permette di osservare direttamente le vie respiratorie e prelevare campioni.</li>
-    <li><strong>BIOPSIA</strong>: Conferma la diagnosi analizzando le cellule al microscopio.</li>
-    <li><strong>RM ENCEFALO</strong>: Se si sospettano metastasi cerebrali.</li>
-</ul>
+      <h3>Esami per l’osservazione e la diagnosi del tumore al polmone</h3>
+      <p>Il tumore al polmone non dà sintomi nelle fasi iniziali, per questo la diagnosi precoce è difficile ed è opportuno fare degli esami più approfonditi, come:</p>
+      <ul>
+        <li><strong>RADIOGRAFIA del TORACE (poco consigliata)</strong>: Può individuare masse sospette, ma non è sempre sufficiente.</li>
+        <li><strong>TAC (Tomografia Assiale Computerizzata)</strong>: È l’esame più importante per osservare dimensione e posizione del tumore ed eventuale diffusione ai tessuti vicini.</li>
+        <li><strong>PET (Tomografia a emissione di positroni)</strong>: Serve a valutare se il tumore è attivo e se si è diffuso ad altri organi.</li>
+        <li><strong>BRONCOSCOPIA</strong>: Permette di osservare direttamente le vie respiratorie e prelevare campioni.</li>
+        <li><strong>BIOPSIA</strong>: Conferma la diagnosi analizzando le cellule al microscopio.</li>
+        <li><strong>RM ENCEFALO</strong>: Se si sospettano metastasi cerebrali.</li>
+      </ul>
 
-<h3>TERAPIA del TUMORE al POLMONE</h3>
-<p>La terapia dipende da: tipo di tumore; stadio della malattia; condizioni generali del paziente.</p>
-<p><strong>Principali trattamenti:</strong></p>
-<ul>
-    <li>Chirurgia: rimozione del tumore se diagnosticato in fase precoce</li>
-    <li>Chemioterapia: uso di farmaci per distruggere le cellule tumorali</li>
-    <li>Radioterapia: utilizzo di radiazioni per colpire le cellule malate</li>
-    <li>Terapie mirate e immunoterapia: Sono trattamenti più moderni che agiscono in modo selettivo sulle cellule tumorali, spesso vengono utilizzate più terapie insieme.</li>
-</ul>
+      <h3>TERAPIA del TUMORE al POLMONE</h3>
+      <p>La terapia dipende da: tipo di tumore; stadio della malattia; condizioni generali del paziente.</p>
+      <p><strong>Principali trattamenti:</strong></p>
+      <ul>
+        <li>Chirurgia: rimozione del tumore se diagnosticato in fase precoce</li>
+        <li>Chemioterapia: uso di farmaci per distruggere le cellule tumorali</li>
+        <li>Radioterapia: utilizzo di radiazioni per colpire le cellule malate</li>
+        <li>Terapie mirate e immunoterapia: Sono trattamenti più moderni che agiscono in modo selettivo sulle cellule tumorali, spesso vengono utilizzate più terapie insieme.</li>
+      </ul>
 
-<h3>PREVENZIONE del TUMORE LEGATO al POLMONE</h3>
-<p>La prevenzione è fondamentale perché il danno avviene nel lungo periodo.</p>
-<p><strong>Prevenzione primaria:</strong></p>
-<ul>
-    <li>Misurare la concentrazione di radon negli edifici.</li>
-    <li>Migliorare la ventilazione degli ambienti.</li>
-    <li>Ridurre il radon con interventi strutturali negli edifici.</li>
-    <li>Non fumare: il fumo moltiplica il rischio.</li>
-</ul>
-<p><strong>Prevenzione secondaria:</strong></p>
-<ul>
-    <li>Controlli medici per persone ad alto rischio (es. fumatori).</li>
-</ul>
+      <h3>PREVENZIONE del TUMORE LEGATO al POLMONE</h3>
+      <p>La prevenzione è fondamentale perché il danno avviene nel lungo periodo.</p>
+      <p><strong>Prevenzione primaria:</strong></p>
+      <ul>
+        <li>Misurare la concentrazione di radon negli edifici.</li>
+        <li>Migliorare la ventilazione degli ambienti.</li>
+        <li>Ridurre il radon con interventi strutturali negli edifici.</li>
+        <li>Non fumare: il fumo moltiplica il rischio.</li>
+      </ul>
+      <p><strong>Prevenzione secondary:</strong></p>
+      <ul>
+        <li>Controlli medici per persone ad alto rischio (es. fumatori).</li>
+      </ul>
 
-<h3>Limiti di sicurezza</h3>
-<p>In Italia, la legge stabilisce un livello di riferimento di 300 Bq/m³ per abitazioni, scuole e luoghi di lavoro, se questo valore viene superato, è necessario adottare misure per ridurre la concentrazione di radon.</p>
+      <h3>Limiti di sicurezza</h3>
+      <p>In Italia, la legge stabilisce un livello di riferimento di 300 Bq/m³ per abitazioni, scuole e luoghi di lavoro, se questo valore viene superato, è necessario adottare misure per ridurre la concentrazione di radon.</p>
 
-<h3>Come ridurre il rischio</h3>
-<p>Ridurre il rischio da radon significa misurarlo, abbassarne la concentrazione negli ambienti chiusi e ridurre i fattori che ne amplificano gli effetti.</p>
-<ul>
-    <li><strong>Misurare il radon</strong>: Usa dosimetri passivi certificati. Durata consigliata: almeno 3–12 mesi. Posizionali nei locali più vissuti e ai piani a contatto col suolo.</li>
-    <li><strong>Migliorare la ventilazione</strong>: arieggiare regolarmente i locali. installare ventilazione meccanica controllata (VMC). ventilare soprattutto cantine, garage e locali poco usati.</li>
-    <li><strong>Sigillare le vie d’ingresso</strong>: sigilla crepe nel pavimento e nelle pareti. chiudi passaggi di tubazioni e giunti. usa membrane o resine specifiche se necessario.</li>
-    <li><strong>Depressurizzazione del suolo</strong>: installazione di un pozzo o tubo sotto la platea. aspirazione del gas prima che entri nell’edificio.</li>
-    <li><strong>Nuove costruzioni</strong>: barriera antiradon sotto le fondamenta. vespaio aerato. predisposizione di sistemi di aspirazione.</li>
-    <li><strong>Non fumare in casa</strong>: Radon + fumo = rischio molto più alto di tumore al polmone.</li>
-</ul>
-</div>
-</div>
+      <h3>Come ridurre il rischio</h3>
+      <p>Ridurre il rischio da radon significa misurarlo, abbassarne la concentrazione negli ambienti chiusi e ridurre i fattori che ne amplificano gli effetti.</p>
+      <ul>
+        <li><strong>Misurare il radon</strong>: Usa dosimetri passivi certificati. Durata consigliata: almeno 3–12 mesi. Posizionali nei locali più vissuti e ai piani a contatto col suolo.</li>
+        <li><strong>Migliorare la ventilazione</strong>: arieggiare regolarmente i locali; installare ventilazione meccanica controllata (VMC); ventilare soprattutto cantine, garage e locali poco usati.</li>
+        <li><strong>Sigillare le vie d’ingresso</strong>: sigilla crepe nel pavimento e nelle pareti; chiudi passaggi di tubazioni e giunti; usa membrane o resine specifiche se necessario.</li>
+        <li><strong>Depressurizzazione del suolo</strong>: installazione di un pozzo o tubo sotto la platea; aspirazione del gas prima che entri nell’edificio.</li>
+        <li><strong>Nuove costruzioni</strong>: barriera antiradon sotto le fondamenta; vespaio aerato; predisposizione di sistemi di aspirazione.</li>
+        <li><strong>Non fumare in casa</strong>: Radon + fumo = rischio molto più alto di tumore al polmone.</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- =========================================================
-     PAGINA 6: NORMATIVE (TESTI ORIGINALI)
+     PAGINA 6: NORMATIVE
      ========================================================= -->
 <section id="page-normative" class="page">
-<div class="hero">
-<h1>Normative</h1>
-<div class="sub">Regolamentazioni e sicurezza</div>
-</div>
-<div class="card">
-<div class="doc">
-<h2>Quadro normativo generale sulla prevenzione del rischio radon</h2>
+  <div class="hero">
+    <h1>Normative</h1>
+    <div class="sub">Quadro legislativo e tutela della salute</div>
+  </div>
+  <div class="card">
+    <div class="doc">
+      <h2>Quadro normativo generale sulla prevenzione del rischio radon</h2>
 
-<h3>radon e rischio sanitario:</h3>
-<p>Il radon è un gas radioattivo naturale, incolore e inodore, che deriva dal decadimento dell’uranio presente nel suolo e nei materiali da costruzione. Negli ambienti chiusi può accumularsi raggiungendo concentrazioni elevate. L’esposizione prolungata al radon rappresenta un rischio significativo per la salute ed è riconosciuta come la seconda causa di tumore polmonare dopo il fumo di tabacco.</p>
+      <h3>Radon e rischio sanitario</h3>
+      <p>Il radon è un gas radioattivo naturale, incolore e inodore, che deriva dal decadimento dell’uranio presente nel suolo e nei materiali da costruzione. Negli ambienti chiusi può accumularsi raggiungendo concentrazioni elevate. L’esposizione prolungata al radon rappresenta un rischio significativo per la salute ed è riconosciuta come la seconda causa di tumore polmonare dopo il fumo di tabacco.</p>
 
-<h3>quadro normativo generale:</h3>
-<p>La normativa sul radon ha l’obiettivo di prevenire e ridurre i rischi derivanti dall’esposizione della popolazione e dei lavoratori. Essa disciplina i livelli di riferimento, le modalità di misura e gli interventi di risanamento, applicandosi alle abitazioni, agli edifici pubblici e ai luoghi di lavoro.</p>
+      <h3>Quadro normativo generale</h3>
+      <p>La normativa sul radon ha l’obiettivo di prevenire e ridurre i rischi derivanti dall’esposizione della popolazione e dei lavoratori. Essa disciplina i livelli di riferimento, le modalità di misura e gli interventi di risanamento, applicandosi alle abitazioni, agli edifici pubblici e ai luoghi di lavoro.</p>
 
-<h3>normativa europea:</h3>
-<p>Il principale riferimento europeo è la Direttiva 2013/59/Euratom, che stabilisce le norme fondamentali di sicurezza per la protezione contro le radiazioni ionizzanti. La direttiva introduce un approccio organico alla tutela della salute e abroga le precedenti direttive in materia di radioprotezione.</p>
+      <h3>Normativa europea</h3>
+      <p>Il principale riferimento europeo è la Direttiva 2013/59/Euratom, che stabilisce le norme fondamentali di sicurezza per la protezione contro le radiazioni ionizzanti. La direttiva introduce un approccio organico alla tutela della salute e abroga le precedenti direttive in materia di radioprotezione.</p>
 
-<h3>piano nazionale d’azione per il radon:</h3>
-<p>L’articolo 103 della Direttiva 2013/59/Euratom prevede che ogni Stato membro adotti un Piano Nazionale d’Azione per il Radon. Il piano è finalizzato alla gestione del rischio a lungo termine e riguarda sia i luoghi di lavoro sia le abitazioni e gli edifici pubblici. Il livello di riferimento per la concentrazione media annua di radon negli ambienti chiusi non deve superare i 300 Bq/m³.</p>
+      <h3>Piano Nazionale d’Azione per il Radon</h3>
+      <p>L’articolo 103 della Direttiva 2013/59/Euratom prevede che ogni Stato membro adotti un Piano Nazionale d’Azione per il Radon. Il piano è finalizzato alla gestione del rischio a lungo termine e riguarda sia i luoghi di lavoro sia le abitazioni e gli edifici pubblici. Il livello di riferimento per la concentrazione media annua di radon negli ambienti chiusi non deve superare i 300 Bq/m³.</p>
 
-<h3>precedente riferimento europeo:</h3>
-<p>Prima della direttiva vigente, il radon indoor era disciplinato dalla Raccomandazione 90/143/Euratom. Essa indicava valori di riferimento pari a 400 Bq/m³ per gli edifici esistenti e 200 Bq/m³ per quelli di nuova costruzione. Pur non essendo vincolante, ha rappresentato la base scientifica delle normative successive.</p>
+      <h3>Precedente riferimento europeo</h3>
+      <p>Prima della direttiva vigente, il radon indoor era disciplinato dalla Raccomandazione 90/143/Euratom. Essa indicava valori di riferimento pari a 400 Bq/m³ per gli edifici esistenti e 200 Bq/m³ per quelli di nuova costruzione. Pur non essendo vincolante, ha rappresentato la base scientifica delle normative successive.</p>
 
-<h3>evoluzione della normativa italiana:</h3>
-<p>In Italia, per molti anni il riferimento normativo è stato il Decreto legislativo 230/1995, che disciplinava la protezione dalle radiazioni ionizzanti. Con le successive modifiche, il radon è stato considerato esclusivamente nei luoghi di lavoro, con un livello di azione pari a 500 Bq/m³. L’esposizione nelle abitazioni non era contemplata.</p>
+      <h3>Evoluzione della normativa italiana</h3>
+      <p>In Italia, per molti anni il riferimento normativo è stato il Decreto legislativo 230/1995, che disciplinava la protezione dalle radiazioni ionizzanti. Con le successive modifiche, il radon è stato considerato esclusivamente nei luoghi di lavoro, con un livello di azione pari a 500 Bq/m³. L’esposizione nelle abitazioni non era contemplata.</p>
 
-<h3>normativa vigente in italia:</h3>
-<p>Il Decreto legislativo 101/2020 recepisce la Direttiva 2013/59/Euratom e rappresenta oggi il testo unico di riferimento. La normativa estende la tutela dal rischio radon alle abitazioni, agli edifici pubblici e ai luoghi di lavoro e prevede l’adozione del Piano Nazionale d’Azione per il Radon.</p>
+      <h3>Normativa vigente in Italia</h3>
+      <p>Il Decreto legislativo 101/2020 recepisce la Direttiva 2013/59/Euratom e rappresenta oggi il testo unico di riferimento. La normativa estende la tutela dal rischio radon alle abitazioni, agli edifici pubblici e ai luoghi di lavoro e prevede l’adozione del Piano Nazionale d’Azione per il Radon.</p>
 
-<h3>livelli di riferimento nazionali:</h3>
-<p>Il decreto stabilisce livelli di riferimento per la concentrazione media annua di radon pari a 300 Bq/m³ per le abitazioni esistenti e per i luoghi di lavoro, e a 200 Bq/m³ per le abitazioni costruite dopo il 31 dicembre 2024. Il superamento di tali valori comporta obblighi di valutazione e di adozione di misure correttive.</p>
+      <h3>Livelli di riferimento nazionali</h3>
+      <p>Il decreto stabilisce livelli di riferimento per la concentrazione media annua di radon pari a 300 Bq/m³ per le abitazioni esistenti e per i luoghi di lavoro, e a 200 Bq/m³ per le abitazioni costruite dopo il 31 dicembre 2024. Il superamento di tali valori comporta obblighi di valutazione e di adozione di misure correttive.</p>
 
-<h3>ruolo istituzionale e conclusioni:</h3>
-<p>Le Regioni e le Province autonome individuano le aree prioritarie a rischio radon e promuovono attività di monitoraggio e informazione. Il supporto tecnico è garantito da enti come l’Istituto Superiore di Sanità, l’INAIL e le ARPA. Il quadro normativo attuale consente un approccio integrato alla prevenzione e alla riduzione del rischio da esposizione al radon.</p>
-</div>
-</div>
+      <h3>Ruolo istituzionale e conclusioni</h3>
+      <p>Le Regioni e le Province autonome individuano le aree prioritarie a rischio radon e promuovono attività di monitoraggio e informazione. Il supporto tecnico è garantito da enti come l’Istituto Superiore di Sanità, l’INAIL e le ARPA. Il quadro normativo attuale consente un approccio integrato alla prevenzione e alla riduzione del rischio da esposizione al radon.</p>
+    </div>
+  </div>
 </section>
 
 <!-- =========================================================
-     PAGINA 7: DATI RACCOLTI 
+     PAGINA 7: DATI RACCOLTI
      ========================================================= -->
 <section id="page-dati" class="page">
   <div class="hero">
     <h1>Dati raccolti</h1>
-    <div class="sub">Risultati e analisi dei dati</div>
+    <div class="sub">Risultati empirici ed analisi di laboratorio</div>
   </div>
 
   <div class="card">
@@ -633,30 +667,54 @@ footer {
       <h2>Presentazione dei dati raccolti</h2>
 
       <p>
-        <a href="https://canva.link/3a69m01wjj8bkqe"
-           target="_blank"
-           rel="noopener noreferrer"
-           style="color: var(--accent); font-weight: 700; text-decoration: underline;">
-           🔗 Ecco i dati che abbiamo raccolto durante la ricerca ↗
-        </a>
+        I dati quantitativi raccolti durante il periodo di monitoraggio dell'istituto sono stati strutturati ed analizzati graficamente.
       </p>
-
+      
+      <!-- Box evidenziato contenente il link di Canva -->
+      <div class="highlight-box">
+        <strong>Visualizza la presentazione completa dei dati:</strong><br><br>
+        <a href="https://canva.link/3a69m01wjj8bkqe" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); font-weight: 700; text-decoration: underline; font-size: 1.1rem;">
+          🔗 ecco i dati che abbiamo raccolto ↗
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     PAGINA 8: RADIO LAB SUMMER SCHOOL 
+     PAGINA 8: RADIO LAB SUMMER SCHOOL
      ========================================================= -->
 <section id="page-summer-school" class="page">
   <div class="hero">
     <h1>Radio Lab Summer School</h1>
-    <div class="sub"></div>
+    <div class="sub">Esperienza estiva di formazione scientifica e orientamento sul campo</div>
   </div>
 
   <div class="card">
     <div class="doc">
-      <!-- Sezione vuota  -->
+      <h2>Iniziativa Radio Lab Summer School</h2>
+      <p>La <strong>Radio Lab Summer School</strong> rappresenta un’esperienza formativa di eccellenza nata nell'ambito delle attività di orientamento e diffusione scientifica della radioprotezione e della fisica delle radiazioni. Durante la scuola estiva, gli studenti hanno l'opportunità di approfondire le tematiche legate alla radioattività naturale e alle sue applicazioni sperimentali in un contesto universitario e di ricerca dinamico.</p>
+
+      <h3>Obiettivi della Summer School</h3>
+      <p>Attraverso un approccio "hands-on" (apprendimento pratico), la Summer School si propone di:</p>
+      <ul>
+        <li><strong>Approfondire la metodologia scientifica:</strong> applicare i metodi della ricerca fisica al monitoraggio ambientale.</li>
+        <li><strong>Attività di laboratorio avanzato:</strong> utilizzare strumentazioni per la misura delle radiazioni alfa, beta e gamma (tra cui spettrometria e analisi delle tracce nucleari).</li>
+        <li><strong>Elaborazione dei dati:</strong> acquisire competenze avanzate nella statistica di misura e nella modellizzazione della dispersione del Radon.</li>
+        <li><strong>Lavoro di squadra e orientamento:</strong> sperimentare il lavoro di gruppo interdisciplinare in stretta collaborazione con ricercatori ed esperti del settore.</li>
+      </ul>
+
+      <h3>Moduli e Attività svolte</h3>
+      <p>Durante le giornate della Summer School gli studenti partecipano a un programma articolato che comprende:</p>
+      <ul>
+        <li><strong>Seminari teorici propedeutici:</strong> tenuti da docenti universitari e ricercatori degli enti nazionali di ricerca sulla radioprotezione.</li>
+        <li><strong>Campionamento sul campo:</strong> installazione, sostituzione e recupero di dosimetri a tracce in ambienti ad alto interesse geologico e strutturale.</li>
+        <li><strong>Sviluppo di progetti di ricerca:</strong> stesura di report scientifici conclusivi e presentazione dei risultati tramite poster e presentazioni interattive.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>In sintesi:</strong> La Radio Lab Summer School costituisce un ponte fondamentale tra il mondo della scuola secondaria e quello dell'Università e della Ricerca scientifica, fornendo agli studenti strumenti critici e pratici per la comprensione della fisica moderna e dell'ambiente.
+      </div>
     </div>
   </div>
 </section>
@@ -664,16 +722,19 @@ footer {
 </main>
 
 <footer>
-© RADON — progetto 5BLSSA ITIS MATTEI
+  © RADON — progetto 5BLSSA ITIS MATTEI
 </footer>
 
 <!-- =========================================================
      JAVASCRIPT DI NAVIGAZIONE
      ========================================================= -->
 <script>
+// Elenco degli ID di tutte le pagine disponibili
 const pages = ["home", "radioattivita", "radon", "medicina", "normative", "malattie", "dati", "summer-school"];
 
+// Funzione richiamata al click sui pulsanti del menu (es: go('radon'))
 function go(p) {
+    // 1. Rimuove la classe "active" da tutte le pagine e da tutti i pulsanti
     pages.forEach(x => {
         const pageEl = document.getElementById("page-" + x);
         const tabEl = document.getElementById("tab-" + x);
@@ -681,12 +742,14 @@ function go(p) {
         if (tabEl) tabEl.classList.remove("active");
     });
     
+    // 2. Aggiunge la classe "active" solo alla pagina e al pulsante selezionati
     const targetPage = document.getElementById("page-" + p);
     const targetTab = document.getElementById("tab-" + p);
     
     if (targetPage) targetPage.classList.add("active");
     if (targetTab) targetTab.classList.add("active");
     
+    // 3. Riporta la schermata all'inizio della pagina con uno scorrimento fluido
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
