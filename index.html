@@ -1,4 +1,4 @@
-<<!doctype html>
+<!doctype html>
 <html lang="it">
 <head>
 <meta charset="utf-8">
@@ -8,7 +8,6 @@
 <style>
 /* =========================================================
    1. VARIABILI DEI COLORI E DEGLI STILI GENERALI
-   Modifica qui i colori per cambiare l'aspetto di tutto il sito
    ========================================================= */
 :root {
   --bg: #EAEFEF;             /* Colore di sfondo generale del sito (grigio-azzurro riposante) */
@@ -30,7 +29,7 @@
 * { box-sizing: border-box; }
 
 /* =========================================================
-   2. STILE DEL CORPO DELLA PAGINA (BODY)
+   2. (BODY)
    ========================================================= */
 body {
   margin: 0;
@@ -45,7 +44,7 @@ body {
 }
 
 /* =========================================================
-   3. BARRA DI NAVIGAZIONE IN ALTO (TOPBAR)
+   3. BARRA DI NAVIGAZIONE IN ALTO 
    ========================================================= */
 .topbar {
   position: fixed;        /* Rimane bloccata in alto mentre si scorre la pagina */
@@ -126,8 +125,8 @@ body {
 
 /* Stile del pulsante della pagina CORRENTE/ATTIVA */
 .nav button.active {
-  background: var(--primary-dark); /* Colore blu notte */
-  color: #ffffff;                  /* Testo bianco sul pulsante attivo */
+  background: var(--primary-dark); 
+  color: #ffffff;                  
   box-shadow: 0 4px 10px rgba(15, 76, 129, 0.2);
 }
 
@@ -135,8 +134,6 @@ body {
    4. GESTIONE PAGINE E TRANSIZIONI
    ========================================================= */
 .page { display: none; } /* Le pagine nascoste non occupano spazio */
-
-/* La pagina visibile si attiva con una leggera animazione verso l'alto */
 .page.active {
   display: block;
   animation: fadeIn 0.3s ease-out;
@@ -153,13 +150,13 @@ body {
   padding: 24px 20px;
 }
 
-/* Spazio vuoto in alto per non far sovrapporre la barra fissa ai contenuti */
+
 .spacer { height: 80px; }
 
 /* =========================================================
-   5. INTESTAZIONI E SCHEDE (HERO & CARDS)
+   5. INTESTAZIONI E SCHEDE 
    ========================================================= */
-/* Box del titolo in cima a ogni pagina */
+
 .hero {
   background: linear-gradient(135deg, #F8FAFA, #E2E8F0);
   border: 1px solid var(--line);
@@ -173,7 +170,7 @@ body {
 h1 {
   font-size: 2.2rem;
   margin: 0;
-  color: #0F172A; /* Blu scurissimo / Antracite */
+  color: #0F172A; 
   font-weight: 800;
   letter-spacing: -0.02em;
 }
@@ -270,7 +267,7 @@ h3::before {
 /* Riquadro di evidenziazione speciale per link o note importanti */
 .highlight-box {
   background: #E2E8F0;
-  border-left: 4px solid var(--primary-dark); /* Bordo spesso sul lato sinistro */
+  border-left: 4px solid var(--primary-dark); 
   border-radius: 8px;
   padding: 16px 20px;
   margin: 20px 0;
@@ -278,7 +275,7 @@ h3::before {
 }
 
 /* =========================================================
-   6. PIÈ DI PAGINA (FOOTER)
+                          FOOTER
    ========================================================= */
 footer {
   margin: 40px 0 20px;
@@ -303,8 +300,7 @@ footer {
 
 <!-- =========================================================
      INIZIO BARRA DI NAVIGAZIONE
-     Per aggiungere una nuova voce al menu:
-     Crea un nuovo <button id="tab-NOME" onclick="go('NOME')">Titolo</button>
+     nuovo <button id="tab-NOME" onclick="go('NOME')">Titolo</button>
      ========================================================= -->
 <header class="topbar">
   <div class="topbar-inner">
@@ -325,7 +321,7 @@ footer {
   </div>
 </header>
 
-<div class="spacer"></div> <!-- Spaziatore fisso -->
+<div class="spacer"></div> 
 
 <main class="container">
 
@@ -669,8 +665,6 @@ footer {
       <p>
         I dati quantitativi raccolti durante il periodo di monitoraggio dell'istituto sono stati strutturati ed analizzati graficamente.
       </p>
-      
-      <!-- Box evidenziato contenente il link di Canva -->
       <div class="highlight-box">
         <strong>Visualizza la presentazione completa dei dati:</strong><br><br>
         <a href="https://canva.link/3a69m01wjj8bkqe" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); font-weight: 700; text-decoration: underline; font-size: 1.1rem;">
@@ -729,12 +723,9 @@ footer {
      JAVASCRIPT DI NAVIGAZIONE
      ========================================================= -->
 <script>
-// Elenco degli ID di tutte le pagine disponibili
 const pages = ["home", "radioattivita", "radon", "medicina", "normative", "malattie", "dati", "summer-school"];
 
-// Funzione richiamata al click sui pulsanti del menu (es: go('radon'))
 function go(p) {
-    // 1. Rimuove la classe "active" da tutte le pagine e da tutti i pulsanti
     pages.forEach(x => {
         const pageEl = document.getElementById("page-" + x);
         const tabEl = document.getElementById("tab-" + x);
@@ -742,14 +733,12 @@ function go(p) {
         if (tabEl) tabEl.classList.remove("active");
     });
     
-    // 2. Aggiunge la classe "active" solo alla pagina e al pulsante selezionati
     const targetPage = document.getElementById("page-" + p);
     const targetTab = document.getElementById("tab-" + p);
     
     if (targetPage) targetPage.classList.add("active");
     if (targetTab) targetTab.classList.add("active");
     
-    // 3. Riporta la schermata all'inizio della pagina con uno scorrimento fluido
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
