@@ -6,113 +6,272 @@
 <title>RADON | Progetto Scientifico</title>
 
 <style>
-:root{
---bg:#EAF3FF;
---panel:#0E1422;
---text:#EAF0FF;
---muted:#A9B6D3;
---accent:#38BDF8;
---accent2:#7DD3FC; 
---line:rgba(255,255,255,.12);
---radius:18px;
---radius2:12px;
---shadow:0 14px 40px rgba(0,0,0,.45);
---max:1100px;
+/* =========================================================
+   1. VARIABILI DEI COLORI E DEGLI STILI GENERALI 
+   ========================================================= */
+:root {
+  --bg: #fcfdff;             /* Sfondo generale  */
+  --panel: #bce8ff;          /* Sfondo delle schede */
+  --card-bg: #F8FAFC;        /* Sfondo secondario per riquadri interni */
+  --text: #334155;           /* Testo principale */
+  --text-muted: #64748B;     /* Testo secondario */
+  --accent: #003891;         /* colore titoli ed elementi */
+  --accent2: #004e78;        /* colore dei dettagli  */
+  --line: #E2E8F0;           /* stile delle linee */
+  --radius: 18px;            /* stile delle schede */
+  --radius2: 12px;           /* stile degli elementi piccoli */
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); /* stile delle ombre */
+  --max: 1100px;             /* larghezza massima pagina */
 }
 
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-background:
-radial-gradient(800px 400px at 10% 0%, rgba(56,189,248,.12), transparent 55%),
-radial-gradient(600px 350px at 90% 10%, rgba(125,211,252,.08), transparent 60%),
-var(--bg);
-color:var(--text);
+/* Reset base */
+* { box-sizing: border-box; }
+
+/* =========================================================
+   2. STILE DEL CORPO DELLA PAGINA 
+   ========================================================= */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
 }
 
-.topbar{
-position:fixed;top:0;left:0;right:0;
-background:rgba(234,243,255,.9);
-backdrop-filter:blur(20px);
-border-bottom:1px solid rgba(0,0,0,0.05);
-z-index:1000;
-color:#0B1C3A;
-}
-.topbar-inner{
-max-width:var(--max);
-margin:auto;
-padding:14px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:14px;
-}
-.brand{display:flex; gap:12px; align-items:center;}
-.logo{width:40px;height:40px;border-radius:14px; background:radial-gradient(circle, var(--accent), #0E1422);}
-.brand b{letter-spacing:.14em}
-.brand small{color:#556677;font-size:.8rem}
-
-.nav button{
-background:none;border:none;
-color:var(--panel);
-padding:10px 16px;
-border-radius:999px;
-cursor:pointer;
-transition:.2s;
-font-size:0.95rem;
-font-weight:600;
-}
-.nav button:hover, .nav button.active{ background:var(--panel); color:#ffffff; }
-.page{display:none}
-.page.active{display:block}
-
-.container{max-width:var(--max);margin:auto;padding:24px}
-.spacer{height:90px}
-
-.hero{
-background:linear-gradient(180deg,#0E1422,#0B1020);
-border:1px solid var(--line);
-border-radius:var(--radius);
-padding:32px;
-box-shadow:var(--shadow);
-margin-bottom:24px;
-}
-h1{font-size:2.5rem; margin:0; color:#fff}
-h2{color:var(--accent); margin:0 0 20px 0; font-size:1.8rem; border-bottom:1px solid var(--line); padding-bottom:10px}
-h3{color:var(--accent2); margin:28px 0 12px; font-size:1.4rem; display:flex; align-items:center; gap:8px}
-h3::before{content:''; width:4px; height:18px; background:var(--accent); border-radius:4px}
-
-.sub{color:var(--muted);margin-top:6px; font-size:1.1rem}
-
-.card{
-background:var(--panel);
-border-radius:var(--radius2);
-border:1px solid var(--line);
-padding:40px;
-box-shadow:var(--shadow);
-margin-bottom:40px;
+/* =========================================================
+   3. BARRA DI NAVIGAZIONE IN ALTO 
+   ========================================================= */
+.topbar {
+  position: fixed;       
+  top: 0; left: 0; right: 0;
+  background: rgba(240, 244, 248, 0.92); 
+  backdrop-filter: blur(16px);            
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.doc{
-max-width:900px;
-margin:auto;
-line-height:1.9;
-font-size:1.15rem;
-color:var(--text);
+.topbar-inner {
+  max-width: var(--max);
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
-.doc p{margin:18px 0;}
-.doc ul{margin:10px 0 24px 20px; padding:0; list-style:none}
-.doc li{margin:12px 0; position:relative; padding-left:26px; color:var(--text)}
-.doc li::before{content:'•'; position:absolute; left:0; color:var(--accent); font-weight: bold;}
-.doc strong{color:#ffffff; font-weight:700}
 
-footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-size:.9rem; }
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #0F4C81);
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+}
+
+.brand b {
+  letter-spacing: .14em;
+  color: #0F172A;
+  font-size: 1.1rem;
+}
+
+.brand small {
+  color: #64748B;
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.nav button {
+  background: none;
+  border: none;
+  color: #475569;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.nav button:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.nav button.active {
+  background: #0F172A; 
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
+}
+
+/* =========================================================
+   4. GESTIONE PAGINE E TRANSIZIONI
+   ========================================================= */
+.page { display: none; }
+
+.page.active {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: var(--max);
+  margin: auto;
+  padding: 24px 20px;
+}
+
+.spacer { height: 85px; }
+
+/* =========================================================
+   5. INTESTAZIONI E SCHEDE 
+   ========================================================= */
+.hero {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 2.3rem;
+  margin: 0;
+  color: #0F172A;
+  font-weight: 800;
+}
+
+.sub {
+  color: var(--accent);
+  margin-top: 6px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.card {
+  background: var(--panel); 
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  padding: 36px;
+  box-shadow: var(--shadow);
+  margin-bottom: 32px;
+}
+
+.doc {
+  max-width: 920px;
+  margin: auto;
+  line-height: 1.8;
+  font-size: 1.08rem;
+  color: var(--text);
+}
+
+h2 {
+  color: var(--accent);
+  margin: 0 0 20px 0;
+  font-size: 1.7rem;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+
+h3 {
+  color: #0F172A;
+  margin: 28px 0 12px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+h3::before {
+  content: '';
+  width: 4px;
+  height: 18px;
+  background: var(--accent);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.doc p { margin: 18px 0; }
+
+.doc ul {
+  margin: 12px 0 24px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.doc li {
+  margin: 12px 0;
+  position: relative;
+  padding-left: 26px;
+  color: var(--text);
+}
+
+.doc li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.doc strong {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.highlight-box {
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+
+footer {
+  margin: 40px 0 20px;
+  padding: 24px 0;
+  color: #64748B;
+  text-align: center;
+  font-size: .9rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 768px) {
+  .topbar-inner { flex-direction: column; align-items: flex-start; }
+  .nav { width: 100%; overflow-x: auto; padding-bottom: 4px; }
+  .card, .hero { padding: 20px; }
+  h1 { font-size: 1.8rem; }
+}
 </style>
 </head>
 
 <body>
 
+<!-- =========================================================
+     BARRA DI NAVIGAZIONE (MENU)
+     ========================================================= -->
 <header class="topbar">
 <div class="topbar-inner">
 <div class="brand">
@@ -126,9 +285,9 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 <button id="tab-medicina" onclick="go('medicina')">Medicina nucleare</button>
 <button id="tab-malattie" onclick="go('malattie')">Malattie</button>
 <button id="tab-normative" onclick="go('normative')">Normative</button>
-<button id="tab-normative" onclick="go('dati')">Dati Raccolti</button>
-</nav
-
+<button id="tab-dati" onclick="go('dati')">Dati Raccolti</button>
+<button id="tab-summer-school" onclick="go('summer-school')">Radio Lab Summer School</button>
+</nav>
 </div>
 </header>
 
@@ -136,7 +295,9 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 
 <main class="container">
 
-<!-- HOME -->
+<!-- =========================================================
+     PAGINA 1: HOME 
+     ========================================================= -->
 <section id="page-home" class="page active">
 <div class="hero">
 <h1>Il Progetto sul RADON</h1>
@@ -158,7 +319,9 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 </div>
 </section>
 
-<!-- RADIOATTIVITÀ -->
+<!-- =========================================================
+     PAGINA 2: RADIOATTIVITÀ 
+     ========================================================= -->
 <section id="page-radioattivita" class="page">
 <div class="hero">
 <h1>Radioattività</h1>
@@ -222,7 +385,9 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 </div>
 </section>
 
-<!-- RADON -->
+<!-- =========================================================
+     PAGINA 3: RADON (TESTI ORIGINALI)
+     ========================================================= -->
 <section id="page-radon" class="page">
 <div class="hero">
 <h1>Radon</h1>
@@ -248,7 +413,7 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 <li>emissione di radiazioni</li>
 </ul>
 
-<p>I prodotti del decadimento del radon, anch’essi radioattivi, possono aderire alle particelle di polvere presenti nell’aria. Se inalati, si depositano nei polmoni, dove las radiazioni emesse possono danneggiare il DNA delle cellule. Questo danno, se prolungato nel tempo, aumenta il rischio di sviluppare il tumore ai polmoni, soprattutto nei soggetti esposti per lunghi periodi. Per questo motivo il radon è riconosciuto come una delle principali cause di tumore polmonare non legate al fumo ed è considerato un importante problema di salute pubblica.</p>
+<p>I prodotti del decadimento del radon, anch’essi radioattivi, possono aderire alle particelle di polvere presenti nell’aria. Se inalati, si depositano nei polmoni, dove le radiazioni emesse possono danneggiare il DNA delle cellule. Questo danno, se prolungato nel tempo, aumenta il rischio di sviluppare il tumore ai polmoni, soprattutto nei soggetti esposti per lunghi periodi. Per questo motivo il radon è riconosciuto come una delle principali cause di tumore polmonare non legate al fumo ed è considerato un importante problema di salute pubblica.</p>
 
 <p>Dal punto di vista chimico, il radon si differenzia dagli altri gas nobili, come elio, neon e argon, che sono stabili e non radioattivi. Il radon è infatti l’unico gas nobile a presentare una radioattività significativa. Inoltre, rispetto agli elementi solidi o liquidi, la sua forma gassosa gli permette di:</p>
 <ul>
@@ -261,7 +426,9 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 </div>
 </section>
 
-<!-- MEDICINA -->
+<!-- =========================================================
+     PAGINA 4: MEDICINA NUCLEARE 
+     ========================================================= -->
 <section id="page-medicina" class="page">
 <div class="hero">
 <h1>Medicina nucleare</h1>
@@ -288,7 +455,7 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 <p><strong>Funzionamento e procedura:</strong></p>
 <ul>
     <li>L’esame si basa sulla somministrazione di un radiofarmaco che viene introdotto nell’organismo e si distribuisce selettivamente nell’organo o nel tessuto da esaminare.</li>
-    <li>Le radiofarmaco emette radiazioni gamma che vengono rilevate da uno strumento chiamato gamma-camera, il quale le trasforma in immagini diagnostiche.</li>
+    <li>Il radiofarmaco emette radiazioni gamma che vengono rilevate da uno strumento chiamato gamma-camera, il quale le trasforma in immagini diagnostiche.</li>
     <li>Le immagini ottenute mostrano aree di maggiore o minore captazione del radiofarmaco, indicando rispettivamente un’attività funzionale aumentata o ridotta.</li>
 </ul>
 
@@ -315,7 +482,9 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 </div>
 </section>
 
-<!-- MALATTIE -->
+<!-- =========================================================
+     PAGINA 5: MALATTIE 
+     ========================================================= -->
 <section id="page-malattie" class="page">
 <div class="hero">
 <h1>Malattie</h1>
@@ -395,20 +564,22 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 <p>In Italia, la legge stabilisce un livello di riferimento di 300 Bq/m³ per abitazioni, scuole e luoghi di lavoro, se questo valore viene superato, è necessario adottare misure per ridurre la concentrazione di radon.</p>
 
 <h3>Come ridurre il rischio</h3>
-<p>Ridurre il rischio da radon significa misurarlo, abbassarne la concentrazione negli ambienti chiusi e ridurre i fattori che ne amplificano degli effetti.</p>
+<p>Ridurre il rischio da radon significa misurarlo, abbassarne la concentrazione negli ambienti chiusi e ridurre i fattori che ne amplificano gli effetti.</p>
 <ul>
     <li><strong>Misurare il radon</strong>: Usa dosimetri passivi certificati. Durata consigliata: almeno 3–12 mesi. Posizionali nei locali più vissuti e ai piani a contatto col suolo.</li>
     <li><strong>Migliorare la ventilazione</strong>: arieggiare regolarmente i locali. installare ventilazione meccanica controllata (VMC). ventilare soprattutto cantine, garage e locali poco usati.</li>
     <li><strong>Sigillare le vie d’ingresso</strong>: sigilla crepe nel pavimento e nelle pareti. chiudi passaggi di tubazioni e giunti. usa membrane o resine specifiche se necessario.</li>
     <li><strong>Depressurizzazione del suolo</strong>: installazione di un pozzo o tubo sotto la platea. aspirazione del gas prima che entri nell’edificio.</li>
-    <li><strong>Nuove costruzioni</strong>: barriera antiradon sotto las fondamenta. vespaio aerato. predisposizione di sistemi di aspirazione.</li>
+    <li><strong>Nuove costruzioni</strong>: barriera antiradon sotto le fondamenta. vespaio aerato. predisposizione di sistemi di aspirazione.</li>
     <li><strong>Non fumare in casa</strong>: Radon + fumo = rischio molto più alto di tumore al polmone.</li>
 </ul>
 </div>
 </div>
 </section>
 
-<!-- NORMATIVE -->
+<!-- =========================================================
+     PAGINA 6: NORMATIVE (TESTI ORIGINALI)
+     ========================================================= -->
 <section id="page-normative" class="page">
 <div class="hero">
 <h1>Normative</h1>
@@ -443,14 +614,14 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 <p>Il decreto stabilisce livelli di riferimento per la concentrazione media annua di radon pari a 300 Bq/m³ per le abitazioni esistenti e per i luoghi di lavoro, e a 200 Bq/m³ per le abitazioni costruite dopo il 31 dicembre 2024. Il superamento di tali valori comporta obblighi di valutazione e di adozione di misure correttive.</p>
 
 <h3>ruolo istituzionale e conclusioni:</h3>
-<p>Le Regioni e le Province autonome individuano le aree prioritarie a rischio radon e promuovono attività di monitoraggio e informazione. Il supporto tecnico è garantito da enti come l’Istituto Superiore di Sanità, l’INAIL e le ARPA. Il quadro normativo actuel consente un approccio integrato alla prevenzione e alla riduzione del rischio da esposizione al radon.</p>
+<p>Le Regioni e le Province autonome individuano le aree prioritarie a rischio radon e promuovono attività di monitoraggio e informazione. Il supporto tecnico è garantito da enti come l’Istituto Superiore di Sanità, l’INAIL e le ARPA. Il quadro normativo attuale consente un approccio integrato alla prevenzione e alla riduzione del rischio da esposizione al radon.</p>
 </div>
 </div>
 </section>
 
-
-
-<!-- DATI RACCOLTI -->
+<!-- =========================================================
+     PAGINA 7: DATI RACCOLTI 
+     ========================================================= -->
 <section id="page-dati" class="page">
   <div class="hero">
     <h1>Dati raccolti</h1>
@@ -465,34 +636,58 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
         <a href="https://canva.link/3a69m01wjj8bkqe"
            target="_blank"
            rel="noopener noreferrer"
-           style="color: white; text-decoration: underline;">
+           style="color: var(--accent); font-weight: 700; text-decoration: underline;">
+           🔗 Ecco i dati che abbiamo raccolto durante la ricerca ↗
         </a>
       </p>
 
     </div>
   </div>
 </section>
-</div>
-</div>
+
+<!-- =========================================================
+     PAGINA 8: RADIO LAB SUMMER SCHOOL 
+     ========================================================= -->
+<section id="page-summer-school" class="page">
+  <div class="hero">
+    <h1>Radio Lab Summer School</h1>
+    <div class="sub"></div>
+  </div>
+
+  <div class="card">
+    <div class="doc">
+      <!-- Sezione vuota  -->
+    </div>
+  </div>
 </section>
 
+</main>
 
 <footer>
 © RADON — progetto 5BLSSA ITIS MATTEI
 </footer>
 
-</main>
-
+<!-- =========================================================
+     JAVASCRIPT DI NAVIGAZIONE
+     ========================================================= -->
 <script>
-const pages=["home","radioattivita","radon","medicina","normative","malattie","dati"];
-function go(p){
-    pages.forEach(x=>{
-        document.getElementById("page-"+x).classList.remove("active");
-        document.getElementById("tab-"+x).classList.remove("active");
+const pages = ["home", "radioattivita", "radon", "medicina", "normative", "malattie", "dati", "summer-school"];
+
+function go(p) {
+    pages.forEach(x => {
+        const pageEl = document.getElementById("page-" + x);
+        const tabEl = document.getElementById("tab-" + x);
+        if (pageEl) pageEl.classList.remove("active");
+        if (tabEl) tabEl.classList.remove("active");
     });
-    document.getElementById("page-"+p).classList.add("active");
-    document.getElementById("tab-"+p).classList.add("active");
-    window.scrollTo(0,0);
+    
+    const targetPage = document.getElementById("page-" + p);
+    const targetTab = document.getElementById("tab-" + p);
+    
+    if (targetPage) targetPage.classList.add("active");
+    if (targetTab) targetTab.classList.add("active");
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 
