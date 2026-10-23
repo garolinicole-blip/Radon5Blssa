@@ -126,7 +126,9 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 <button id="tab-medicina" onclick="go('medicina')">Medicina nucleare</button>
 <button id="tab-malattie" onclick="go('malattie')">Malattie</button>
 <button id="tab-normative" onclick="go('normative')">Normative</button>
-</nav>
+<button id="tab-normative" onclick="go('dati')">Dati Raccolti</button>
+</nav
+
 </div>
 </header>
 
@@ -446,6 +448,35 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 </div>
 </section>
 
+
+
+<!-- DATI RACCOLTI -->
+<section id="page-dati" class="page">
+  <div class="hero">
+    <h1>Dati raccolti</h1>
+    <div class="sub">Risultati e analisi dei dati</div>
+  </div>
+
+  <div class="card">
+    <div class="doc">
+      <h2>Presentazione dei dati raccolti</h2>
+
+      <p>
+        <a href="https://canva.link/3a69m01wjj8bkqe"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="color: white; text-decoration: underline;">
+        </a>
+      </p>
+
+    </div>
+  </div>
+</section>
+</div>
+</div>
+</section>
+
+
 <footer>
 © RADON — progetto 5BLSSA ITIS MATTEI
 </footer>
@@ -453,7 +484,7 @@ footer{ margin:40px 0; padding:24px 0; color:#445566; text-align:center; font-si
 </main>
 
 <script>
-const pages=["home","radioattivita","radon","medicina","normative","malattie"];
+const pages=["home","radioattivita","radon","medicina","normative","malattie","dati"];
 function go(p){
     pages.forEach(x=>{
         document.getElementById("page-"+x).classList.remove("active");
