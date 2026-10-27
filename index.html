@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RADON | Progetto Scientifico</title>
+<title>RADON 5BLSSA ITIS MATTEI</title>
 
 <style>
 /* =========================================================
    1. VARIABILI DEI COLORI E DEGLI STILI GENERALI
    ========================================================= */
 :root {
-  --bg: #EAEFEF;             /* Colore di sfondo generale del sito (grigio-azzurro riposante) */
-  --panel: #F8FAFA;          /* Sfondo dei riquadri/schede principali (grigio perla opaco) */
-  --card-bg: #FFFFFF;        /* Sfondo alternativo per sotto-elementi */
-  --text: #1E293B;           /* Colore dei testi principali (antracite scuro ben visibile) */
-  --text-muted: #475569;     /* Colore per sottotitoli e testi secondari */
-  --primary: #0284C7;        /* Colore d'accento azzurro per dettagli e icone */
-  --primary-dark: #0F4C81;   /* Colore blu notte per i titoli e i bottoni attivi */
-  --accent: #0284C7;         /* Colore dei pallini degli elenchi e barrette */
-  --line: #CBD5E1;           /* Colore dei bordi e delle linee divisorie */
-  --radius: 18px;            /* Arrotondamento degli angoli delle schede grandi */
-  --radius2: 12px;           /* Arrotondamento degli angoli per elementi piccoli */
-  --shadow: 0 10px 25px rgba(15, 23, 42, 0.05); /* Ombra morbida sotto le schede */
-  --max: 1100px;             /* Larghezza massima dei contenuti della pagina */
+  --bg: #4aa5a8;             /* Sfondo morbido, desaturato e riposante */
+  --panel: #FFFFFF;          /* Sfondo dei riquadri/schede */
+  --card-bg: #F0F7F7;        
+  --text: #1b3a3b;           /* Colore dei testi principali */
+  --text-muted: #2e696b;     
+  --primary: #2e696b;        
+  --primary-dark: #1b3a3b;   
+  --accent: #3b878a;         
+  --line: #78bcbf;           
+  --radius: 18px;            
+  --radius2: 12px;           
+  --shadow: 0 10px 25px rgba(27, 58, 59, 0.12);
+  --max: 1100px;             
 }
 
 /* Reset base per il calcolo delle dimensioni */
@@ -34,106 +34,106 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  /* Sfumature di sfondo morbide senza abbagliare la vista */
   background:
-    radial-gradient(900px 500px at 10% 0%, rgba(2, 132, 199, 0.08), transparent 60%),
-    radial-gradient(800px 400px at 90% 10%, rgba(148, 163, 184, 0.12), transparent 65%),
+    radial-gradient(1000px 600px at 15% 0%, rgba(95, 185, 188, 0.4), transparent 60%),
+    radial-gradient(900px 500px at 85% 15%, rgba(35, 85, 87, 0.35), transparent 65%),
     var(--bg);
   color: var(--text);
-  line-height: 1.7; /* Spaziatura tra le righe di testo per facilitare la lettura */
+  line-height: 1.7;
 }
 
 /* =========================================================
-   3. BARRA DI NAVIGAZIONE IN ALTO 
+   3. BARRA DI NAVIGAZIONE IN ALTO (SOTTILE & QUASI TRASPARENTE)
    ========================================================= */
 .topbar {
-  position: fixed;        /* Rimane bloccata in alto mentre si scorre la pagina */
+  position: fixed;
   top: 0; left: 0; right: 0;
-  background: rgba(234, 239, 239, 0.92); /* Sfondo semitrasparente */
-  backdrop-filter: blur(16px);            /* Effetto vetro sfocato */
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);   /* Linea di separazione sotto il menu */
-  z-index: 1000;                          /* Mantiene la barra sopra tutti gli altri elementi */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  /* Sfondo quasi trasparente con effetto opaco/vetro sfocato */
+  background: rgba(255, 255, 255, 0.25); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Contenitore interno della barra in alto */
+/* Contenitore interno compatto */
 .topbar-inner {
   max-width: var(--max);
   margin: auto;
-  padding: 12px 20px;
+  padding: 6px 20px; /* Ridotto il padding per renderla più sottile */
   display: flex;
-  justify-content: space-between; /* Spazia il logo a sinistra e i pulsanti a destra */
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 /* Stile del Logo e Titolo */
 .brand {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
 }
 
-/* Il quadratino colorato del logo */
 .logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #0284C7, #0F4C81); /* Sfumatura blu del logo */
-  box-shadow: 0 4px 10px rgba(15, 76, 129, 0.25);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1b3a3b, #3b878a);
+  box-shadow: 0 2px 6px rgba(27, 58, 59, 0.3);
 }
 
 .brand b {
-  letter-spacing: .12em;
-  color: #0F172A;
-  font-size: 1.1rem;
+  letter-spacing: .1em;
+  color: #0f2526;
+  font-size: 0.95rem;
 }
 
 .brand small {
-  color: #475569;
-  font-size: .8rem;
-  font-weight: 500;
+  color: #1b3a3b;
+  font-size: .75rem;
+  font-weight: 600;
 }
 
 /* Contenitore dei pulsanti del menu */
 .nav {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
 }
 
 /* Singoli pulsanti di navigazione */
 .nav button {
-  background: none;
-  border: none;
-  color: #334155;             /* Colore del testo dei pulsanti non attivi */
-  padding: 8px 14px;          /* Dimensione interna dei pulsanti */
-  border-radius: 999px;       /* Forma a pillola/arrotondata */
-  cursor: pointer;            /* Cambia il cursore al passaggio del mouse */
-  transition: all 0.2s ease;  /* Animazione morbida al cambio stato */
-  font-size: 0.9rem;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid transparent;
+  color: #0f2526;             /* Testo scuro e ben leggibile sopra il vetro trasparente */
+  padding: 5px 11px;          /* Dimensioni sottili */
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.82rem;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
 }
 
-/* Effetto quando si passa sopra col mouse a un pulsante */
 .nav button:hover {
-  background: #CBD5E1;
-  color: #0F172A;
+  background: rgba(255, 255, 255, 0.5);
+  color: #000000;
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Stile del pulsante della pagina CORRENTE/ATTIVA */
 .nav button.active {
-  background: var(--primary-dark); 
+  background: #1b3a3b; 
   color: #ffffff;                  
-  box-shadow: 0 4px 10px rgba(15, 76, 129, 0.2);
+  box-shadow: 0 2px 8px rgba(27, 58, 59, 0.3);
 }
 
 /* =========================================================
    4. GESTIONE PAGINE E TRANSIZIONI
    ========================================================= */
-.page { display: none; } /* Le pagine nascoste non occupano spazio */
+.page { display: none; }
 .page.active {
   display: block;
   animation: fadeIn 0.3s ease-out;
@@ -150,15 +150,14 @@ body {
   padding: 24px 20px;
 }
 
-
-.spacer { height: 80px; }
+.spacer { height: 60px; } /* Spacer ridotto per la barra più sottile */
 
 /* =========================================================
    5. INTESTAZIONI E SCHEDE 
    ========================================================= */
 
 .hero {
-  background: linear-gradient(135deg, #F8FAFA, #E2E8F0);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 247, 247, 0.9));
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 32px;
@@ -166,26 +165,23 @@ body {
   margin-bottom: 24px;
 }
 
-/* Titolo principale (H1) */
 h1 {
   font-size: 2.2rem;
   margin: 0;
-  color: #0F172A; 
+  color: #1b3a3b; 
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
-/* Sottotitolo sotto H1 */
 .sub {
-  color: var(--primary-dark);
+  color: #2e696b;
   margin-top: 6px;
   font-size: 1.05rem;
   font-weight: 600;
 }
 
-/* Schede principali dei contenuti */
 .card {
-  background: var(--panel);      /* Grigio perla opaco riposante per gli occhi */
+  background: var(--panel);
   border-radius: var(--radius);
   border: 1px solid var(--line);
   padding: 36px;
@@ -193,7 +189,6 @@ h1 {
   margin-bottom: 32px;
 }
 
-/* Contenitore di testo formattato */
 .doc {
   max-width: 920px;
   margin: auto;
@@ -202,19 +197,17 @@ h1 {
   color: var(--text);
 }
 
-/* Titoli delle sezioni interne (H2) */
 h2 {
   color: var(--primary-dark);
   margin: 0 0 20px 0;
   font-size: 1.65rem;
-  border-bottom: 2px solid var(--line); /* Linea sotto il titolo H2 */
+  border-bottom: 2px solid var(--line);
   padding-bottom: 10px;
   font-weight: 700;
 }
 
-/* Sottotitoli dei paragrafi (H3) con barretta colorata */
 h3 {
-  color: #0F172A;
+  color: #1b3a3b;
   margin: 28px 0 12px;
   font-size: 1.25rem;
   display: flex;
@@ -223,7 +216,6 @@ h3 {
   font-weight: 700;
 }
 
-/* Barretta colorata decorativa a sinistra di H3 */
 h3::before {
   content: '';
   width: 5px;
@@ -235,11 +227,10 @@ h3::before {
 
 .doc p { margin: 16px 0; }
 
-/* Elenchi puntati personalizzati */
 .doc ul {
   margin: 12px 0 24px 0;
   padding: 0;
-  list-style: none; /* Nasconde i pallini predefiniti del browser */
+  list-style: none;
 }
 
 .doc li {
@@ -249,7 +240,6 @@ h3::before {
   color: var(--text);
 }
 
-/* Pallino azzurro personalizzato per gli elenchi */
 .doc li::before {
   content: '•';
   position: absolute;
@@ -260,18 +250,18 @@ h3::before {
 }
 
 .doc strong {
-  color: #0F172A;
+  color: #1b3a3b;
   font-weight: 700;
 }
 
-/* Riquadro di evidenziazione speciale per link o note importanti */
 .highlight-box {
-  background: #E2E8F0;
+  background: #f0f7f7;
   border-left: 4px solid var(--primary-dark); 
   border-radius: 8px;
   padding: 16px 20px;
   margin: 20px 0;
-  color: #0F172A;
+  color: #1b3a3b;
+  border: 1px solid #78bcbf;
 }
 
 /* =========================================================
@@ -280,13 +270,14 @@ h3::before {
 footer {
   margin: 40px 0 20px;
   padding: 24px 0;
-  color: #475569;
+  color: #ffffff;
   text-align: center;
   font-size: .9rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
-/* Adaptazione per schermi piccoli / cellulari */
 @media (max-width: 768px) {
   .topbar-inner { flex-direction: column; align-items: flex-start; }
   .nav { width: 100%; overflow-x: auto; padding-bottom: 4px; }
@@ -300,7 +291,6 @@ footer {
 
 <!-- =========================================================
      INIZIO BARRA DI NAVIGAZIONE
-     nuovo <button id="tab-NOME" onclick="go('NOME')">Titolo</button>
      ========================================================= -->
 <header class="topbar">
   <div class="topbar-inner">
@@ -687,7 +677,9 @@ footer {
   <div class="card">
     <div class="doc">
       <h2>Iniziativa Radio Lab Summer School</h2>
-      <p>La <strong>Radio Lab Summer School</strong> 
+
+      <div class="highlight-box">
+
       </div>
     </div>
   </div>
